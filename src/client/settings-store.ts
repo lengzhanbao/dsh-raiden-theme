@@ -55,6 +55,23 @@ function migrateStoredSettings(raw: unknown): unknown {
   delete input.veilStrength
   delete input.backgroundVeil
 
+  const version = Number(input.schemaVersion ?? 0)
+  if (version < 2) {
+    if (input.acrylicPercent == null || input.acrylicPercent === 70) input.acrylicPercent = 38
+    if (input.frameOpacity == null || input.frameOpacity === 85) input.frameOpacity = 42
+    if (input.panelOpacity == null || input.panelOpacity === 82) input.panelOpacity = 42
+    if (input.veilOpacity == null || input.veilOpacity === 10) input.veilOpacity = 6
+    input.schemaVersion = 2
+  }
+  if (version < 3) {
+    input.showMascot = false
+    input.schemaVersion = 3
+  }
+  if (version < 4) {
+    if (input.showWorkspaceMascot == null) input.showWorkspaceMascot = true
+    input.schemaVersion = 4
+  }
+
   return input
 }
 

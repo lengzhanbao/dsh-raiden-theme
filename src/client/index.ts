@@ -28,6 +28,7 @@ import {
   createTrims,
   removeOwnedChrome,
   syncStageArt,
+  syncSidebarMascot,
   TAFFY_INLINE_STYLE_KEYS,
 } from './mount'
 import { restoreInlineStyles, snapshotInlineStyles } from './inline-restore'
@@ -150,6 +151,7 @@ export function apply(ctx: ClientContext): void {
       settings = next
       syncTheme()
       ensureChrome()
+      syncSidebarMascot(settings, document)
     })
 
     return () => {
@@ -185,6 +187,7 @@ export function apply(ctx: ClientContext): void {
       body.removeAttribute('data-raiden-hide-left')
       body.removeAttribute('data-raiden-hide-right')
       body.removeAttribute('data-raiden-hide-mascot')
+      body.removeAttribute('data-raiden-hide-workspace-mascot')
       body.removeAttribute('data-raiden-right-crowded')
       body.removeAttribute('data-raiden-q-ready')
       delete body.dataset.raidenSidebarSize

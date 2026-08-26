@@ -1,5 +1,5 @@
 {
-  "assetSetVersion": "2026-08-26-raiden-v1",
+  "assetSetVersion": "2026-08-26-raiden-v17",
   "creamBackground": "#fff7f1",
   "limits": {
     "avatarBytes": 1048576,
@@ -69,10 +69,10 @@
   },
   "wallpaper": {
     "wallpaper-light.webp": {
-      "bytes": 130972
+      "bytes": 440614
     },
     "wallpaper-dark.webp": {
-      "bytes": 137536
+      "bytes": 353114
     }
   }
 }

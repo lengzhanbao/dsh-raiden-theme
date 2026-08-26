@@ -15,10 +15,16 @@ describe('Raiden headshot icons', () => {
       expect(existsSync(join(icons, `${name}.webp`)), name).toBe(true)
       expect(existsSync(join(icons, `${name}.png`)), name).toBe(true)
     }
+    expect(existsSync(join(icons, 'archive-q-light.webp'))).toBe(true)
+    expect(existsSync(join(icons, 'archive-q-dark.webp'))).toBe(true)
+    expect(existsSync(join(icons, 'archive-q-light-still.webp'))).toBe(true)
+    expect(existsSync(join(icons, 'archive-q-dark-still.webp'))).toBe(true)
+    expect(bundledQ).toContain("buildAssetUrl('icons/archive-q-light.webp')")
+    expect(bundledQ).toContain("buildAssetUrl('icons/archive-q-dark.webp')")
     expect(bundledQ).toContain("buildAssetUrl('icons/face-look.webp')")
     expect(bundledQ).toContain("buildAssetUrl('icons/face-happy.webp')")
     expect(bundledQ).toContain("buildAssetUrl('icons/face-stop.webp')")
-    expect(bundledQ).toContain("buildAssetUrl('icons/face-wink.webp')")
+    expect(bundledQ).toContain("buildAssetUrl('hero-avatar.webp')")
     expect(bundledQ).toContain("buildAssetUrl('icons/face-new.webp')")
     expect(bundledQ).toContain("buildAssetUrl('icons/face-portrait.webp')")
     expect(bundledQ).toContain("buildAssetUrl('icons/face-pet.webp')")
@@ -88,10 +94,10 @@ describe('Raiden headshot icons', () => {
     expect(components).not.toContain("[data-slot='sidebar.settings'] button[aria-haspopup='dialog'] > svg")
   })
 
-  it('replaces the hero fish with a round avatar and pink-gold headline', () => {
+  it('replaces the hero fish with a round avatar and purple-gold headline', () => {
     const badges = readFileSync(join(root, 'src/theme/raiden-badges.css'), 'utf8')
     expect(badges).toContain('var(--raiden-hero-avatar) center / cover no-repeat')
     expect(badges).toMatch(/headlineText[\s\S]{0,400}background-clip:\s*text/)
-    expect(badges).toMatch(/linear-gradient\([\s\S]{0,180}#c99a27[\s\S]{0,120}#b8860b/)
+    expect(badges).toMatch(/linear-gradient\([\s\S]{0,180}#8b5cf6[\s\S]{0,120}#c9a227/)
   })
 })

@@ -16,9 +16,9 @@ npm run build
 if ($LASTEXITCODE -ne 0) { throw 'build failed' }
 
 Write-Host "== link install into web profile =="
-Set-Location $ProfileDir
-pnpm remove @dsh-external/dsh-raiden-theme 2>$null
-pnpm add "link:$PluginPath"
+Set-Location $Root
+dsh plugin --profile web add "link:$PluginPath"
+if ($LASTEXITCODE -ne 0) { throw 'dsh plugin add failed' }
 
 Write-Host "== smoke: host entry import =="
 Set-Location $Root

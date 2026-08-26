@@ -2,7 +2,23 @@
 
 ## 0.1.0 — 2026-08-26
 
-- New package `@dsh-external/dsh-raiden-theme` (separate from Taffy)
-- Inazuma violet-gold acrylic Web theme: light conservatory / dark electro stage
-- Raiden standees, Q-face sidebar icons, optional agent preset
-- Same host asset route + verify/pack gates as the Taffy shell
+### 主题与视觉
+
+- 新包 `@dsh-external/dsh-raiden-theme`（与 Taffy 主题独立仓库）
+- 浅色天守花房 / 深色雷舞台全屏壁纸（1920×1280，融合立绘场景）
+- 紫金亚克力对话框、侧栏 trim、环境粒子（樱瓣 / 电光）
+- 首页标题替换为「原神！！！启动！！！」
+- Q 版功能图标：品牌头像、命令芯片、发送、设置等
+
+### 工作区 Q 版动图
+
+- 侧栏 **工作区** 区域挂载慢速 6 帧动图（无损 WebP，浅/深各一套）
+- 外轮廓抗锯齿透明、主体内不透明；主题色边缘去黑边
+- 设置项 **工作区 Q 版动图** 可单独开关
+- `prefers-reduced-motion` 与「减弱动效」自动降级为静帧
+
+### 设置与工程
+
+- **雷电将军工房** 设置面板：总开关、透明度滑块、立绘、动效
+- 资产门控 v17、92 项测试、verify/pack 发布流水线
+- 可选 Agent 预设「Raiden 雷电将军」

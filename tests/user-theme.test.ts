@@ -10,7 +10,7 @@ describe('user theme', () => {
     })
     expect(tokens.primary).toBe('#a78bfa')
     expect(tokens.accent).toBe('#e7b957')
-    expect(tokens.secondary).toBe('#493b50')
+    expect(tokens.secondary).toBe('#3d2a52')
   })
 
   it('rejects unsafe custom colors', () => {
@@ -58,7 +58,7 @@ describe('user theme', () => {
       dynamicEnabled: true,
       dynamicIntensity: 'standard',
     })
-    expect(tokens.text).toBe('#fff3e8')
+    expect(tokens.text).toBe('#f4edff')
   })
 
   it('pins custom text only when asked, so dark CSS can still switch', () => {

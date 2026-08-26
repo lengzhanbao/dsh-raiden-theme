@@ -30,7 +30,7 @@ export declare const RaidenColorConfigSchema: z<Schemastery.ObjectS<{
     dynamicIntensity: z<"low" | "standard" | "high", "low" | "standard" | "high">;
 }>>;
 export declare const RaidenSettingsSchema: z<Schemastery.ObjectS<{
-    schemaVersion: z<1, 1>;
+    schemaVersion: z<number, number>;
     enabled: z<boolean, boolean>;
     displayName: z<string, string>;
     subtitle: z<string, string>;
@@ -48,6 +48,7 @@ export declare const RaidenSettingsSchema: z<Schemastery.ObjectS<{
     showLeftCharacter: z<boolean, boolean>;
     showRightCharacter: z<boolean, boolean>;
     showMascot: z<boolean, boolean>;
+    showWorkspaceMascot: z<boolean, boolean>;
     colors: z<Schemastery.ObjectS<{
         preset: z<"raiden-violet" | "raiden-night" | "raiden-sakura" | "custom", "raiden-violet" | "raiden-night" | "raiden-sakura" | "custom">;
         primary: z<string, string>;
@@ -76,7 +77,7 @@ export declare const RaidenSettingsSchema: z<Schemastery.ObjectS<{
         dynamicIntensity: z<"low" | "standard" | "high", "low" | "standard" | "high">;
     }>>;
 }>, Schemastery.ObjectT<{
-    schemaVersion: z<1, 1>;
+    schemaVersion: z<number, number>;
     enabled: z<boolean, boolean>;
     displayName: z<string, string>;
     subtitle: z<string, string>;
@@ -94,6 +95,7 @@ export declare const RaidenSettingsSchema: z<Schemastery.ObjectS<{
     showLeftCharacter: z<boolean, boolean>;
     showRightCharacter: z<boolean, boolean>;
     showMascot: z<boolean, boolean>;
+    showWorkspaceMascot: z<boolean, boolean>;
     colors: z<Schemastery.ObjectS<{
         preset: z<"raiden-violet" | "raiden-night" | "raiden-sakura" | "custom", "raiden-violet" | "raiden-night" | "raiden-sakura" | "custom">;
         primary: z<string, string>;

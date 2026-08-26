@@ -45,9 +45,12 @@ describe('settings store', () => {
     saveSettings({
       ...DEFAULT_SETTINGS,
       veilOpacity: 14,
+      showWorkspaceMascot: false,
     })
     const raw = JSON.parse(memory.get(STORAGE_KEY) ?? '{}') as Record<string, unknown>
     expect(raw.veilOpacity).toBe(14)
+    expect(raw.showWorkspaceMascot).toBe(false)
+    expect(raw.schemaVersion).toBe(4)
     expect(raw).not.toHaveProperty('veilStrength')
     expect(veilFromOpacity(14)).toBe('standard')
   })

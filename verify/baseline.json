@@ -5,10 +5,10 @@
   "clientJsMaxBytes": 1200000,
   "contrastMinRatio": 4.5,
   "contrastPairs": [
-    ["#141018", "#fffdfb"],
-    ["#141018", "#fff7f1"],
-    ["#fff3e8", "#211b32"],
-    ["#fff3e8", "#181326"]
+    ["#1a1024", "#f8f3ff"],
+    ["#1a1024", "#f4eefc"],
+    ["#f4edff", "#160e24"],
+    ["#f4edff", "#0f0818"]
   ],
   "requiredPackageFiles": [
     "lib/index.js",

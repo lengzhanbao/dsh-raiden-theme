@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { createHeroCopySync, touchesHeroCopy } from '../src/client/hero-copy.ts'
+import { DEFAULT_SETTINGS } from '../src/config.ts'
+import { createHeroCopySync, resolveHeroHeadline, touchesHeroCopy } from '../src/client/hero-copy.ts'
 
 describe('hero copy sync', () => {
   it('replaces the host hero headline and restores the exact original text', () => {
@@ -8,12 +9,24 @@ describe('hero copy sync', () => {
     headline.textContent = '探索未至之境'
     document.body.append(headline)
 
-    const heroCopy = createHeroCopySync()
+    const heroCopy = createHeroCopySync(() => resolveHeroHeadline(DEFAULT_SETTINGS))
     heroCopy.apply(document.body)
-    expect(headline.textContent).toBe('关注雷电将军喵！关注雷电将军谢谢喵！')
+    expect(headline.textContent).toBe('原神！！！启动！！！')
 
     heroCopy.restore()
     expect(headline.textContent).toBe('探索未至之境')
+    headline.remove()
+  })
+
+  it('replaces the English host headline', () => {
+    const headline = document.createElement('span')
+    headline.className = 'hero_headlineText'
+    headline.textContent = 'Into the Unknown'
+    document.body.append(headline)
+
+    const heroCopy = createHeroCopySync(() => resolveHeroHeadline(DEFAULT_SETTINGS))
+    heroCopy.apply(document.body)
+    expect(headline.textContent).toBe('原神！！！启动！！！')
     headline.remove()
   })
 

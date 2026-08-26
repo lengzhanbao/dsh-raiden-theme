@@ -17,7 +17,7 @@ export const PLUGIN_ASSET_ROUTE_PREFIX = '/plugins/@dsh-external/dsh-raiden-them
 export const PLUGIN_ASSET_BASE = `${PLUGIN_ASSET_ROUTE_PREFIX}/raiden`
 
 /** Bumped when shipped art changes so browsers skip the 24h asset cache. */
-export const ASSET_SET_VERSION = '2026-08-26-raiden-v1'
+export const ASSET_SET_VERSION = '2026-08-26-raiden-v17'
 
 export function buildAssetUrl(relativePath: string): string {
   const clean = relativePath.replace(/^\/+/, '')

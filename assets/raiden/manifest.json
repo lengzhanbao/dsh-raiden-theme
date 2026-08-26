@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "assetSetVersion": "2026-08-26-raiden-v1",
+  "assetSetVersion": "2026-08-26-raiden-v17",
   "baseline": "baseline.json",
   "defaults": {
     "avatar": "avatar.png",

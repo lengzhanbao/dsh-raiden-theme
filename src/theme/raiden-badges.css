@@ -12,25 +12,25 @@ body[data-dsh-raiden-theme] [data-skin-chrome='atelier-frame'] {
   height: var(--raiden-frame-height, calc(var(--raiden-viewport-height, var(--raiden-conversation-viewport-height)) + 20px));
   right: auto;
   bottom: auto;
-  border: 2.5px solid rgba(242, 155, 194, var(--raiden-frame-opacity, 1));
+  border: 2.5px solid rgba(167, 139, 250, var(--raiden-frame-opacity, 1));
   border-radius: 26px;
   background: var(--raiden-acrylic-light);
   opacity: 1;
   transition: none;
   box-shadow:
-    inset 0 0 0 1.5px rgba(231, 185, 87, 0.78),
-    0 0 0 1px rgba(185, 167, 232, 0.38),
-    0 10px 24px rgba(242, 155, 194, 0.14);
+    inset 0 0 0 1.5px rgba(231, 185, 87, 0.55),
+    0 0 0 1px rgba(124, 58, 237, 0.28),
+    0 10px 24px rgba(109, 40, 217, 0.12);
 }
 
 body[data-dsh-raiden-theme][data-ds-dark-theme] [data-skin-chrome='atelier-frame'],
 body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-skin-chrome='atelier-frame'] {
-  border-color: rgba(242, 165, 200, var(--raiden-frame-opacity, 1));
+  border-color: rgba(196, 181, 253, var(--raiden-frame-opacity, 1));
   background: var(--raiden-acrylic-dark);
   box-shadow:
-    inset 0 0 0 1.5px rgba(231, 185, 87, 0.62),
-    0 0 0 1px rgba(185, 167, 232, 0.32),
-    0 10px 24px rgba(33, 27, 50, 0.22);
+    inset 0 0 0 1.5px rgba(231, 185, 87, 0.45),
+    0 0 0 1px rgba(167, 139, 250, 0.28),
+    0 10px 28px rgba(8, 4, 18, 0.28);
 }
 
 body[data-dsh-raiden-theme][data-raiden-frame-hidden] [data-skin-chrome='atelier-frame'],
@@ -56,7 +56,7 @@ body[data-dsh-raiden-theme] [data-skin-chrome='raiden-top-curtain'] {
   height: 28px;
   border-radius: 26px 26px 0 0;
   background:
-    linear-gradient(180deg, rgba(242, 155, 194, 0.28), rgba(231, 185, 87, 0.12) 55%, transparent 100%);
+    linear-gradient(180deg, rgba(167, 139, 250, 0.28), rgba(231, 185, 87, 0.1) 55%, transparent 100%);
 }
 
 body[data-dsh-raiden-theme] [data-skin-chrome='raiden-bottom-curtain'] {
@@ -296,7 +296,7 @@ body[data-dsh-raiden-theme] [data-phase='hero'] [class*='headlineText'] {
   letter-spacing: 0.02em;
   background-image:
     linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.85) 50%, transparent 58%),
-    linear-gradient(105deg, #c74078 0%, #e06a9b 22%, #c99a27 48%, #b8860b 70%, #d8558f 100%);
+    linear-gradient(105deg, #6d28d9 0%, #8b5cf6 22%, #c9a227 48%, #e7b957 70%, #7c3aed 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -311,7 +311,7 @@ body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-phase='hero
   color: #ffd8e7;
   background-image:
     linear-gradient(105deg, transparent 42%, rgba(255, 245, 235, 0.6) 50%, transparent 58%),
-    linear-gradient(105deg, #ffb8d6 0%, #ffc9e2 22%, #ffe08a 48%, #ffd060 68%, #ffb3d0 100%);
+    linear-gradient(105deg, #ddd6fe 0%, #c4b5fd 22%, #ffe08a 48%, #e7b957 68%, #a78bfa 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

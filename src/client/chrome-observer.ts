@@ -2,7 +2,7 @@ import type { RaidenSettings } from '../state/types'
 import { decorateSidebar } from './mount'
 import { SIDEBAR_SELECTOR, SKIN_OWNER } from './chrome-selectors'
 import { createRafScheduler } from './schedule'
-import { createHeroCopySync, touchesHeroCopy } from './hero-copy'
+import { createHeroCopySync, resolveHeroHeadline, touchesHeroCopy } from './hero-copy'
 
 export interface ChromeObserverOptions {
   getSettings: () => RaidenSettings
@@ -22,7 +22,7 @@ function touchesSelector(node: Node, selector: string): boolean {
 
 export function createChromeObserver(options: ChromeObserverOptions): { disconnect: () => void } {
   const sidebarNodes = new Map<HTMLElement, HTMLElement[]>()
-  const heroCopy = createHeroCopySync()
+  const heroCopy = createHeroCopySync(() => resolveHeroHeadline(options.getSettings()))
 
   const clearSidebar = (sidebar: HTMLElement): void => {
     for (const node of sidebarNodes.get(sidebar) ?? []) node.remove()
@@ -34,9 +34,11 @@ export function createChromeObserver(options: ChromeObserverOptions): { disconne
     if (!settings.enabled) return
     const sidebar = document.querySelector(SIDEBAR_SELECTOR)
     if (!(sidebar instanceof HTMLElement)) return
-    if (sidebar.querySelector(`[data-skin-owner="${SKIN_OWNER}"][data-raiden-mascot='sidebar']`)) return
-    clearSidebar(sidebar)
     const nodes = decorateSidebar(settings, sidebar)
+    const previous = sidebarNodes.get(sidebar) ?? []
+    for (const node of previous) {
+      if (!nodes.includes(node)) node.remove()
+    }
     sidebarNodes.set(sidebar, nodes)
     options.onNodes?.(nodes)
     options.onSidebarChange?.()

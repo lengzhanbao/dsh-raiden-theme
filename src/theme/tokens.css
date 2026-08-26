@@ -1,23 +1,23 @@
 /* Raiden tokens live on body. Official --dsw-* stay on native DSH panes only. */
 
 body[data-dsh-raiden-theme] {
-  --ds-raiden-cream: #fff7f1;
-  --ds-raiden-cream-deep: #ffe8f0;
+  --ds-raiden-cream: #f4eefc;
+  --ds-raiden-cream-deep: #e4d6f8;
   --ds-raiden-pink: #a78bfa;
   --ds-raiden-pink-soft: #ddd6fe;
   --ds-raiden-gold: #e7b957;
   --ds-raiden-gold-deep: #c9a227;
-  --ds-raiden-charcoal: #493b50;
+  --ds-raiden-charcoal: #3d2a52;
   --ds-raiden-ribbon: #c43c3c;
-  --ds-raiden-lens: #91d5e8;
+  --ds-raiden-lens: #c4b5fd;
   --ds-raiden-lavender: #b9a7e8;
-  --ds-raiden-text: #141018;
-  --ds-raiden-text-on-dark: #fff3e8;
+  --ds-raiden-text: #1a1024;
+  --ds-raiden-text-on-dark: #f4edff;
   --raiden-text-halo:
-    0 0 0.6px rgba(255, 255, 255, 0.95),
-    0 1px 0 rgba(255, 247, 241, 0.92),
-    0 0 8px rgba(255, 247, 241, 0.62);
-  --ds-raiden-border: rgba(73, 59, 80, 0.14);
+    0 0 0.6px rgba(255, 255, 255, 0.9),
+    0 1px 0 rgba(244, 238, 252, 0.9),
+    0 0 8px rgba(167, 139, 250, 0.35);
+  --ds-raiden-border: rgba(91, 54, 140, 0.16);
   --raiden-q-face: none;
   --raiden-q-send: none;
   --raiden-q-settings: none;
@@ -26,7 +26,7 @@ body[data-dsh-raiden-theme] {
   --raiden-q-new: none;
   --raiden-q-command: none;
   --raiden-q-stop: none;
-  --raiden-veil-strength: 0.12;
+  --raiden-veil-strength: 0.06;
 
   --ds-agent-idle: var(--ds-raiden-pink);
   --ds-agent-thinking: var(--ds-raiden-lavender);
@@ -45,26 +45,26 @@ body[data-dsh-raiden-theme] {
   --raiden-font: "M PLUS Rounded 1c", Nunito, Inter, "Segoe UI", "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
   --raiden-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
   --raiden-pink: var(--ds-raiden-pink);
-  --raiden-pink-deep: #7c3aed;
+  --raiden-pink-deep: #6d28d9;
   --raiden-ink: var(--ds-raiden-text);
-  --raiden-muted: #817486;
+  --raiden-muted: #6b5a82;
   --raiden-blue: var(--ds-raiden-lens);
   --raiden-radius-sm: 8px;
   --raiden-radius-md: 12px;
   --raiden-radius-lg: 16px;
   --raiden-frame-inset: 8px;
-  --raiden-frame-opacity: 0.85;
-  --raiden-panel-opacity: 82;
+  --raiden-frame-opacity: 0.42;
+  --raiden-panel-opacity: 42;
   --raiden-plate-art: linear-gradient(
     90deg,
-    rgba(196, 181, 253, 0.55),
-    rgba(255, 247, 241, 0.42) 50%,
-    rgba(167, 139, 250, 0.38)
+    rgba(167, 139, 250, 0.38),
+    rgba(244, 238, 252, 0.28) 50%,
+    rgba(124, 58, 237, 0.28)
   );
   --raiden-settings-frame-art: var(--raiden-plate-art);
   --raiden-character-opacity: 1;
   --raiden-veil-opacity: var(--raiden-veil-strength);
-  --raiden-acrylic-percent: 70;
+  --raiden-acrylic-percent: 38;
   --raiden-conversation-left: 0px;
   --raiden-conversation-top: 0px;
   --raiden-conversation-width: 0px;
@@ -79,20 +79,20 @@ body[data-dsh-raiden-theme] {
   --raiden-viewport-height: 0px;
   --raiden-composer-top: 0px;
   --raiden-composer-height: 0px;
-  --raiden-acrylic-bg: color-mix(in srgb, rgb(255, 250, 247) calc(var(--raiden-acrylic-percent) * 1%), transparent);
-  --raiden-acrylic-bg-strong: color-mix(in srgb, rgb(255, 250, 247) calc((var(--raiden-acrylic-percent) + 12) * 1%), transparent);
-  --raiden-acrylic-bg-soft: color-mix(in srgb, rgb(255, 250, 247) calc((var(--raiden-acrylic-percent) - 15) * 1%), transparent);
-  --raiden-acrylic-border: rgba(242, 155, 194, 0.25);
-  --raiden-acrylic-hairline: rgba(242, 155, 194, 0.22);
-  --raiden-acrylic-shadow: rgba(73, 59, 80, 0.12);
-  --raiden-acrylic-blur: 14px;
-  --raiden-acrylic-saturation: 1.05;
-  --raiden-acrylic-light: color-mix(in srgb, rgb(255, 250, 247) calc(var(--raiden-panel-opacity) * 1%), transparent);
-  --raiden-acrylic-dark: color-mix(in srgb, rgb(36, 29, 52) calc(var(--raiden-panel-opacity) * 1%), transparent);
-  --raiden-border-light: rgba(242, 155, 194, 0.34);
-  --raiden-border-dark: rgba(255, 220, 240, 0.2);
-  --raiden-highlight: rgba(255, 255, 255, 0.5);
-  --raiden-shadow: 0 12px 32px rgba(73, 59, 80, 0.12);
+  --raiden-acrylic-bg: color-mix(in srgb, rgb(244, 238, 252) calc(var(--raiden-acrylic-percent) * 1%), transparent);
+  --raiden-acrylic-bg-strong: color-mix(in srgb, rgb(237, 228, 252) calc((var(--raiden-acrylic-percent) + 12) * 1%), transparent);
+  --raiden-acrylic-bg-soft: color-mix(in srgb, rgb(244, 238, 252) calc((var(--raiden-acrylic-percent) - 15) * 1%), transparent);
+  --raiden-acrylic-border: rgba(124, 58, 237, 0.22);
+  --raiden-acrylic-hairline: rgba(167, 139, 250, 0.28);
+  --raiden-acrylic-shadow: rgba(61, 24, 92, 0.12);
+  --raiden-acrylic-blur: 18px;
+  --raiden-acrylic-saturation: 1.12;
+  --raiden-acrylic-light: color-mix(in srgb, rgb(244, 238, 252) calc(var(--raiden-panel-opacity) * 1%), transparent);
+  --raiden-acrylic-dark: color-mix(in srgb, rgb(22, 12, 38) calc(var(--raiden-panel-opacity) * 1%), transparent);
+  --raiden-border-light: rgba(124, 58, 237, 0.28);
+  --raiden-border-dark: rgba(196, 181, 253, 0.22);
+  --raiden-highlight: rgba(255, 255, 255, 0.42);
+  --raiden-shadow: 0 12px 32px rgba(61, 24, 92, 0.14);
 
   background-color: transparent;
 }
@@ -107,36 +107,36 @@ body[data-dsh-raiden-theme][data-raiden-preset='raiden-sakura'] {
 
 body[data-dsh-raiden-theme][data-ds-dark-theme],
 body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] {
-  --ds-raiden-cream: #211b32;
-  --ds-raiden-cream-deep: #181326;
-  --ds-raiden-text: #fff3e8;
-  --ds-raiden-text-on-dark: #fff3e8;
+  --ds-raiden-cream: #160e24;
+  --ds-raiden-cream-deep: #0f0818;
+  --ds-raiden-text: #f4edff;
+  --ds-raiden-text-on-dark: #f4edff;
   --raiden-text-halo:
-    0 0 0.8px rgba(255, 243, 232, 0.95),
-    0 0 7px rgba(231, 185, 87, 0.34),
-    0 0 14px rgba(242, 155, 194, 0.22);
-  --raiden-veil: #211b32;
-  --raiden-veil-strength: 0.14;
+    0 0 0.8px rgba(244, 237, 255, 0.95),
+    0 0 8px rgba(167, 139, 250, 0.4),
+    0 0 16px rgba(124, 58, 237, 0.28);
+  --raiden-veil: #160e24;
+  --raiden-veil-strength: 0.08;
   --raiden-veil-opacity: var(--raiden-veil-strength);
-  --raiden-panel-opacity: 82;
-  --raiden-glow: rgba(242, 165, 200, 0.22);
+  --raiden-panel-opacity: 42;
+  --raiden-glow: rgba(167, 139, 250, 0.28);
   --raiden-plate-art: linear-gradient(
     90deg,
-    rgba(220, 111, 158, 0.22),
-    rgba(39, 30, 55, 0.42) 50%,
-    rgba(185, 167, 232, 0.16)
+    rgba(109, 40, 217, 0.28),
+    rgba(22, 14, 36, 0.32) 50%,
+    rgba(167, 139, 250, 0.22)
   );
   --raiden-settings-frame-art: var(--raiden-plate-art);
-  --raiden-acrylic-bg: color-mix(in srgb, rgb(36, 29, 52) calc(var(--raiden-acrylic-percent) * 1%), transparent);
-  --raiden-acrylic-bg-strong: color-mix(in srgb, rgb(36, 29, 52) calc((var(--raiden-acrylic-percent) + 10) * 1%), transparent);
-  --raiden-acrylic-bg-soft: color-mix(in srgb, rgb(36, 29, 52) calc((var(--raiden-acrylic-percent) - 18) * 1%), transparent);
-  --raiden-acrylic-dark: color-mix(in srgb, rgb(36, 29, 52) calc(var(--raiden-panel-opacity) * 1%), transparent);
-  --raiden-acrylic-border: rgba(255, 244, 250, 0.14);
-  --raiden-acrylic-hairline: rgba(191, 174, 235, 0.22);
-  --raiden-acrylic-shadow: rgba(0, 0, 0, 0.3);
-  --raiden-acrylic-blur: 14px;
-  --raiden-acrylic-saturation: 1.05;
-  --raiden-muted: #a99db2;
+  --raiden-acrylic-bg: color-mix(in srgb, rgb(22, 14, 36) calc(var(--raiden-acrylic-percent) * 1%), transparent);
+  --raiden-acrylic-bg-strong: color-mix(in srgb, rgb(22, 14, 36) calc((var(--raiden-acrylic-percent) + 10) * 1%), transparent);
+  --raiden-acrylic-bg-soft: color-mix(in srgb, rgb(22, 14, 36) calc((var(--raiden-acrylic-percent) - 18) * 1%), transparent);
+  --raiden-acrylic-dark: color-mix(in srgb, rgb(22, 14, 36) calc(var(--raiden-panel-opacity) * 1%), transparent);
+  --raiden-acrylic-border: rgba(196, 181, 253, 0.18);
+  --raiden-acrylic-hairline: rgba(167, 139, 250, 0.28);
+  --raiden-acrylic-shadow: rgba(0, 0, 0, 0.28);
+  --raiden-acrylic-blur: 18px;
+  --raiden-acrylic-saturation: 1.14;
+  --raiden-muted: #b5a4c9;
   background-color: transparent;
 }
 
@@ -169,12 +169,12 @@ body[data-dsh-raiden-theme] :is(
   --dsw-alias-label-primary: var(--ds-raiden-text);
   --dsw-alias-label-secondary: #74697b;
   --dsw-alias-label-tertiary: #948a99;
-  --dsw-alias-interactive-bg-hover: rgba(242, 155, 194, 0.12);
-  --dsw-alias-interactive-bg-active: rgba(185, 167, 232, 0.16);
-  --dsw-specific-bubble: #fff4ea;
-  --dsw-specific-bubble-highlight: #ffe4d2;
-  --dsw-specific-sidebar-fill: color-mix(in srgb, #ffd6e8 62%, transparent);
-  --dsw-specific-input-major: color-mix(in srgb, #fffdfb 90%, transparent);
+  --dsw-alias-interactive-bg-hover: rgba(167, 139, 250, 0.14);
+  --dsw-alias-interactive-bg-active: rgba(124, 58, 237, 0.16);
+  --dsw-specific-bubble: #f3eaff;
+  --dsw-specific-bubble-highlight: #e9dcff;
+  --dsw-specific-sidebar-fill: color-mix(in srgb, #d9c8f6 38%, transparent);
+  --dsw-specific-input-major: color-mix(in srgb, #f4eefc 52%, transparent);
   color: var(--ds-raiden-text);
   font-family: var(--raiden-font);
 }
@@ -197,24 +197,24 @@ body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is(
   --dsw-alias-bg-layer-2: color-mix(in srgb, #2a2340 28%, transparent);
   --dsw-alias-bg-layer-3: color-mix(in srgb, #181326 32%, transparent);
   --dsw-alias-bg-overlay: color-mix(in srgb, #181326 28%, transparent);
-  --dsw-alias-border-l1: rgba(242, 165, 200, 0.12);
-  --dsw-alias-border-l2: rgba(185, 167, 232, 0.2);
-  --dsw-alias-border-l3: color-mix(in srgb, var(--ds-raiden-gold) 40%, transparent);
+  --dsw-alias-border-l1: rgba(167, 139, 250, 0.14);
+  --dsw-alias-border-l2: rgba(167, 139, 250, 0.22);
+  --dsw-alias-border-l3: color-mix(in srgb, var(--ds-raiden-pink) 46%, transparent);
   --dsw-alias-brand-primary: var(--ds-raiden-pink-soft);
   --dsw-alias-brand-text: var(--ds-raiden-text);
-  --dsw-alias-label-caption: #e8dce8;
-  --dsw-alias-label-dimmed: #d4c8d8;
+  --dsw-alias-label-caption: #d8ccec;
+  --dsw-alias-label-dimmed: #c4b5d9;
   --dsw-alias-label-primary-bluish: var(--ds-raiden-text);
-  --dsw-alias-label-primary-dimmed: #f4eef4;
-  --dsw-alias-label-primary-foreground: #211b32;
-  --dsw-alias-label-primary-inverted: #211b32;
+  --dsw-alias-label-primary-dimmed: #efe6ff;
+  --dsw-alias-label-primary-foreground: #160e24;
+  --dsw-alias-label-primary-inverted: #160e24;
   --dsw-alias-label-primary: var(--ds-raiden-text);
-  --dsw-alias-label-secondary: #d8cddf;
-  --dsw-alias-label-tertiary: #a99db2;
-  --dsw-specific-bubble: #2f2744;
-  --dsw-specific-bubble-highlight: #3a3250;
-  --dsw-specific-sidebar-fill: color-mix(in srgb, #271e37 64%, transparent);
-  --dsw-specific-input-major: color-mix(in srgb, #2a2340 88%, transparent);
+  --dsw-alias-label-secondary: #d8ccec;
+  --dsw-alias-label-tertiary: #b5a4c9;
+  --dsw-specific-bubble: #221536;
+  --dsw-specific-bubble-highlight: #2c1c44;
+  --dsw-specific-sidebar-fill: color-mix(in srgb, #1a102c 42%, transparent);
+  --dsw-specific-input-major: color-mix(in srgb, #1c1230 48%, transparent);
   color: var(--ds-raiden-text);
 }
 

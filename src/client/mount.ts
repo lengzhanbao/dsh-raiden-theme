@@ -1,14 +1,14 @@
 import type { RaidenAgentState, RaidenSettings } from '../state/types'
 import {
   isNightScene,
-  resolveAvatarUrl,
   resolveFigureUrls,
   resolvePortraitFallback,
   resolveQChromeUrls,
   resolveWallpaperUrl,
 } from '../assets/resolve'
+import { BUNDLED_ARCHIVE_GIF, BUNDLED_ARCHIVE_GIF_DARK, BUNDLED_ARCHIVE_STILL, BUNDLED_ARCHIVE_STILL_DARK } from './bundled-q'
 import { BUNDLED_HERO_AVATAR, BUNDLED_PORTRAIT } from './bundled-assets'
-import { SKIN_OWNER } from './chrome-selectors'
+import { SKIN_OWNER, SIDEBAR_SELECTOR } from './chrome-selectors'
 import { veilBucket } from './settings-store'
 import { shouldUseLowPower } from './performance'
 
@@ -180,6 +180,7 @@ export function applyRootAttributes(body: HTMLElement, settings: RaidenSettings,
     body.removeAttribute('data-raiden-hide-left')
     body.removeAttribute('data-raiden-hide-right')
     body.removeAttribute('data-raiden-hide-mascot')
+    body.removeAttribute('data-raiden-hide-workspace-mascot')
     body.removeAttribute('data-raiden-q-ready')
     appliedQChrome.delete(body)
     body.removeAttribute('data-raiden-low-power')
@@ -206,7 +207,8 @@ export function applyRootAttributes(body: HTMLElement, settings: RaidenSettings,
   body.style.setProperty('--raiden-hero-avatar', `url("${BUNDLED_HERO_AVATAR}")`)
   body.toggleAttribute('data-raiden-hide-left', !settings.showLeftCharacter)
   body.toggleAttribute('data-raiden-hide-right', !settings.showRightCharacter)
-  body.toggleAttribute('data-raiden-hide-mascot', !settings.showMascot)
+  body.toggleAttribute('data-raiden-hide-mascot', true)
+  body.toggleAttribute('data-raiden-hide-workspace-mascot', !settings.showWorkspaceMascot)
   body.toggleAttribute('data-raiden-low-power', shouldUseLowPower(settings))
   applyQChromeVars(body, settings)
 }
@@ -230,7 +232,18 @@ export function syncStageArt(root: HTMLElement = document.body, settings?: Raide
     right.dataset.raidenPose = poses.right
     applyImageSrc(right, figures.right)
   }
-  if (settings && mascot instanceof HTMLImageElement) applyImageSrc(mascot, resolveAvatarUrl(settings, undefined, night))
+  if (settings && mascot instanceof HTMLImageElement) applyImageSrc(mascot, BUNDLED_HERO_AVATAR)
+  const workspaceMascot = root.querySelector('[data-raiden-workspace-mascot]')
+  if (workspaceMascot instanceof HTMLImageElement && settings?.showWorkspaceMascot) {
+    const reduced = Boolean(settings?.reducedMotion)
+      || (typeof window !== 'undefined'
+        && typeof window.matchMedia === 'function'
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+    const src = night
+      ? (reduced ? BUNDLED_ARCHIVE_STILL_DARK : BUNDLED_ARCHIVE_GIF_DARK)
+      : (reduced ? BUNDLED_ARCHIVE_STILL : BUNDLED_ARCHIVE_GIF)
+    applyImageSrc(workspaceMascot, src)
+  }
 }
 
 export function createCharacterStage(settings: RaidenSettings): HTMLElement | null {
@@ -245,6 +258,8 @@ export function createCharacterStage(settings: RaidenSettings): HTMLElement | nu
     wallpaper.dataset.raidenWallpaper = 'paper'
     wallpaper.alt = ''
     wallpaper.decoding = 'async'
+    wallpaper.width = 1920
+    wallpaper.height = 1280
     bindAssetFallback(wallpaper)
     applyImageSrc(wallpaper, wallpaperUrl)
     stage.append(wallpaper)
@@ -264,25 +279,6 @@ export function createCharacterStage(settings: RaidenSettings): HTMLElement | nu
   atmosphere.dataset.skinOwner = SKIN_OWNER
   atmosphere.dataset.raidenAtmosphere = 'haze'
   atmosphere.setAttribute('aria-hidden', 'true')
-
-  if (settings.portrait !== 'off') {
-    const figures = resolveFigureUrls(night)
-    const poses = scenePoses(night)
-    const leftGround = document.createElement('div')
-    leftGround.dataset.skinOwner = SKIN_OWNER
-    leftGround.dataset.raidenGround = 'left'
-    leftGround.setAttribute('aria-hidden', 'true')
-    const rightGround = document.createElement('div')
-    rightGround.dataset.skinOwner = SKIN_OWNER
-    rightGround.dataset.raidenGround = 'right'
-    rightGround.setAttribute('aria-hidden', 'true')
-    stage.append(
-      leftGround,
-      rightGround,
-      makeImage(figures.left, 'left', poses.left),
-      makeImage(figures.right, 'right', poses.right),
-    )
-  }
 
   stage.append(atmosphere, sparkles)
   return stage
@@ -333,13 +329,69 @@ export function createTrims(): HTMLElement[] {
   return [...createStageCurtains(), createAtelierFrame(), createSidebarTrim()]
 }
 
+function findWorkspaceHost(sidebar: HTMLElement): HTMLElement | null {
+  const labels = new Set(['工作区', 'Workspaces', '会话', 'Sessions'])
+  for (const span of sidebar.querySelectorAll('span')) {
+    if (!labels.has((span.textContent ?? '').trim())) continue
+    const header = span.parentElement
+    const root = header?.parentElement
+    if (root instanceof HTMLElement) return root
+    if (header instanceof HTMLElement) return header
+  }
+  const search = sidebar.querySelector(
+    'button[aria-label="搜索会话"], button[aria-label="Search sessions"]',
+  )
+  if (search instanceof HTMLElement) {
+    const header = search.closest('[class*="sectionHeader"]')
+    const root = header?.parentElement
+    if (root instanceof HTMLElement) return root
+  }
+  return null
+}
+
 export function decorateSidebar(settings: RaidenSettings, sidebar: HTMLElement): HTMLElement[] {
-  if (sidebar.querySelector("[data-raiden-mascot='sidebar']")) return []
-  const inner = sidebar.querySelector(':scope > div')
-  const host = inner instanceof HTMLElement ? inner : sidebar
-  const mascot = makeMascot(resolveAvatarUrl(settings, undefined, isNightScene()))
-  host.prepend(mascot)
-  return [mascot]
+  const existing = sidebar.querySelector('[data-raiden-workspace-mascot]')
+  if (!settings.showWorkspaceMascot) {
+    if (existing instanceof HTMLElement) existing.remove()
+    const host = sidebar.querySelector('[data-raiden-workspace-host]')
+    if (host instanceof HTMLElement) delete host.dataset.raidenWorkspaceHost
+    return []
+  }
+
+  const host = findWorkspaceHost(sidebar)
+  if (!host) {
+    if (existing instanceof HTMLElement) existing.remove()
+    return []
+  }
+
+  host.dataset.raidenWorkspaceHost = ''
+  let gif = existing instanceof HTMLImageElement ? existing : null
+  if (!gif) {
+    gif = document.createElement('img')
+    gif.dataset.skinOwner = SKIN_OWNER
+    gif.dataset.raidenWorkspaceMascot = ''
+    gif.alt = ''
+    gif.decoding = 'async'
+    gif.setAttribute('aria-hidden', 'true')
+  }
+  if (gif.parentElement !== host) host.append(gif)
+
+  const reduced = settings.reducedMotion
+    || (typeof window !== 'undefined'
+      && typeof window.matchMedia === 'function'
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const night = isNightScene()
+  const src = night
+    ? (reduced ? BUNDLED_ARCHIVE_STILL_DARK : BUNDLED_ARCHIVE_GIF_DARK)
+    : (reduced ? BUNDLED_ARCHIVE_STILL : BUNDLED_ARCHIVE_GIF)
+  applyImageSrc(gif, src)
+  return [gif]
+}
+
+export function syncSidebarMascot(settings: RaidenSettings, root: ParentNode = document): void {
+  const sidebar = root.querySelector(SIDEBAR_SELECTOR)
+  if (!(sidebar instanceof HTMLElement)) return
+  decorateSidebar(settings, sidebar)
 }
 
 export function removeOwnedChrome(root: ParentNode = document): void {
