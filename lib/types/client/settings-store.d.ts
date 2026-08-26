@@ -1,0 +1,11 @@
+import type { RaidenSettings } from '../state/types';
+export declare const STORAGE_KEY = "dsh-raiden-theme:v1";
+export declare const SETTINGS_CHANGE_EVENT = "dsh-raiden-theme:settings-change";
+declare const LEGACY_VEILS: readonly ["thin", "standard", "thick"];
+type LegacyVeil = (typeof LEGACY_VEILS)[number];
+export declare function veilFromOpacity(percent: number): LegacyVeil;
+export declare function veilBucket(settings: Pick<RaidenSettings, 'veilOpacity'>): LegacyVeil;
+export declare function loadSettings(): RaidenSettings;
+export declare function saveSettings(next: RaidenSettings): void;
+export declare function subscribeSettings(onChange: (settings: RaidenSettings) => void): () => void;
+export {};

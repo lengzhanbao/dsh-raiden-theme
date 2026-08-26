@@ -1,0 +1,123 @@
+{
+  "name": "@dsh-external/dsh-raiden-theme",
+  "version": "0.1.0",
+  "description": "Raiden Inazuma Atelier / 稻妻雷电工房 — violet-gold acrylic DSH Web theme: light conservatory & dark electro stage, Raiden overlays, optional agent preset.",
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
+  "license": "MIT",
+  "author": "lengzhanbao",
+  "homepage": "https://github.com/lengzhanbao/dsh-raiden-theme#readme",
+  "bugs": {
+    "url": "https://github.com/lengzhanbao/dsh-raiden-theme/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lengzhanbao/dsh-raiden-theme.git"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "theme",
+    "ui",
+    "ui-theme",
+    "webui",
+    "raiden",
+    "acrylic",
+    "light-dark"
+  ],
+  "scripts": {
+    "assets:defringe": "python scripts/defringe-left-light.py",
+    "verify:assets": "node scripts/verify-assets.mjs",
+    "verify:static": "node scripts/verify-raiden.mjs",
+    "verify:pack": "node scripts/verify-pack.mjs",
+    "verify": "node scripts/verify-raiden.mjs",
+    "ci": "npm run verify:assets && npm run verify:static && npm test && npm run verify:pack",
+    "capture:hint": "node scripts/capture-hint.mjs",
+    "install:dev": "powershell -ExecutionPolicy Bypass -File scripts/install-dev.ps1",
+    "install:release": "powershell -ExecutionPolicy Bypass -File scripts/install-release.ps1",
+    "prebuild": "node scripts/verify-assets.mjs",
+    "build": "powershell -ExecutionPolicy Bypass -File scripts/build.ps1 && npm run build:client",
+    "build:client": "npx tsdown",
+    "typecheck": "tsc -p tsconfig.host.json --noEmit",
+    "test": "npx vitest run",
+    "prepublishOnly": "npm run build && npm test && npm run verify:static && npm run verify:pack"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json",
+    "./skin.json": "./skin.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/config.js",
+    "lib/assets/route.js",
+    "lib/assets/manifest.js",
+    "lib/assets/trust-fence.js",
+    "lib/client.js",
+    "lib/prompt/raiden-system.md",
+    "lib/prompt/loader.js",
+    "cordis.patch.yml",
+    "skin.json",
+    "presets",
+    "assets/raiden/*.webp",
+    "assets/raiden/icons/*.webp",
+    "assets/raiden/LICENSE.txt",
+    "assets/raiden/manifest.json",
+    "assets/raiden/baseline.json",
+    "preview/light.webp",
+    "preview/dark.webp",
+    "docs/usage.zh.md",
+    "docs/usage.en.md",
+    "docs/install.zh.md",
+    "docs/install.en.md",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "dependencies": {
+    "schemastery": "^3.18.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-agent-presets": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-client-locale": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-client-runtime": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-client-ui-settings": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-client-ui-settings-general": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-client-ui-slots": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-client-ui-theme": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-settings": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "jsdom": "^29.1.1",
+    "tsdown": "^0.22.14",
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.10"
+  }
+}

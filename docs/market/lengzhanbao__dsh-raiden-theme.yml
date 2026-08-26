@@ -1,0 +1,12 @@
+# Copy this file to awesome-dsh-plugin/data/plugins/lengzhanbao__dsh-raiden-theme.yml
+# after the GitHub repo is ≥1 day old and has ≥10 commits.
+# Then run: node scripts/generate-readme.mjs
+# Category must be `theme` so dsh-market places it on the Themes tab.
+
+url: https://github.com/lengzhanbao/dsh-raiden-theme
+name: lengzhanbao/dsh-raiden-theme
+category: theme
+tarball: https://github.com/lengzhanbao/dsh-raiden-theme/releases/latest/download/dsh-external-dsh-raiden-theme-0.1.0.tgz
+description:
+  en: Candy acrylic DSH Web theme with Raiden light/dark stage art, framed chat, and a Raiden agent preset.
+  zh: 雷电将军浅色/深色舞台立绘与粉金亚克力对话框的 DSH Web 主题，并附带 Raiden Agent 预设。

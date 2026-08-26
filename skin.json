@@ -1,0 +1,33 @@
+{
+  "id": "dsh-raiden-theme",
+  "name": "稻妻雷电工房",
+  "nameEn": "Raiden Inazuma Atelier",
+  "author": "lengzhanbao",
+  "tagline": "紫金亚克力对话框、浅色花房 / 深色雷舞台立绘与 Q 版侧栏",
+  "description": "面向 DeepSeek Harness Web 的雷电将军同人主题。浅色与深色各有本地舞台背景，紫金边框包住对话区，左右立绘与侧栏 Q 脸可开关，亚克力仅 opt-in，不遮挡右侧插件。",
+  "tags": [
+    "theme",
+    "ui",
+    "raiden",
+    "anime",
+    "acrylic",
+    "violet",
+    "electro",
+    "gold",
+    "light",
+    "dark",
+    "dsh"
+  ],
+  "accent": "#a78bfa",
+  "bodyAttr": "data-dsh-raiden-theme",
+  "package": "@dsh-external/dsh-raiden-theme",
+  "wiring": {
+    "id": "dsh-raiden-theme",
+    "bundleWired": true
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "order": 10
+}

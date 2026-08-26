@@ -1,0 +1,127 @@
+import {
+  ACTIVE_SELECTOR,
+  CHAT_FLOW_SELECTOR,
+  COMPOSER_CARD_SELECTOR,
+  CONVERSATION_SELECTOR,
+  HERO_SELECTOR,
+  SIDEBAR_SELECTOR,
+} from './chrome-selectors'
+import { STYLE_ID } from './styles'
+
+export interface RaidenMetricsPayload {
+  scene?: string
+  at: string
+  enabled: boolean
+  selectorMisses: string[]
+  frameWidth: number
+  frameHeight: number
+  frameHidden: boolean
+  frameCompact: boolean
+  phase: 'hero' | 'active' | 'unknown'
+  viewportWidth: number
+  viewportHeight: number
+}
+
+const METRICS_OPT_OUT_KEY = 'dsh-raiden-theme:metrics'
+const MISS_GRACE_MS = 3000
+
+let enabledGetter: () => boolean = () => true
+let selectorWarned = false
+let mountedAt = 0
+let lastMetricsSignature = ''
+
+export function setMetricsEnabledGetter(getter: () => boolean): void {
+  enabledGetter = getter
+}
+
+export function metricsStampingEnabled(): boolean {
+  try {
+    return localStorage.getItem(METRICS_OPT_OUT_KEY) !== '0'
+  } catch {
+    return true
+  }
+}
+
+export function selectorMisses(doc: Document): string[] {
+  const misses: string[] = []
+  const required: Array<[string, string]> = [
+    ['SIDEBAR_SELECTOR', SIDEBAR_SELECTOR],
+    ['COMPOSER_CARD_SELECTOR', COMPOSER_CARD_SELECTOR],
+    ['CONVERSATION_SELECTOR', CONVERSATION_SELECTOR],
+  ]
+
+  for (const [name, selector] of required) {
+    if (!doc.querySelector(selector)) misses.push(name)
+  }
+
+  if (doc.querySelector(HERO_SELECTOR) === null && doc.querySelector(ACTIVE_SELECTOR) === null) {
+    misses.push('PHASE_SELECTOR')
+  }
+
+  if (doc.querySelector(ACTIVE_SELECTOR) !== null) {
+    const flow = doc.querySelector(`${ACTIVE_SELECTOR} ${CHAT_FLOW_SELECTOR}`) ?? doc.querySelector(CHAT_FLOW_SELECTOR)
+    if (!flow) misses.push('CHAT_FLOW_SELECTOR')
+  }
+
+  return misses
+}
+
+function parsePx(value: string): number {
+  const parsed = Number.parseFloat(value)
+  return Number.isFinite(parsed) ? parsed : 0
+}
+
+export function readMetricsFromBody(body: HTMLElement, enabled: boolean, scene?: string): RaidenMetricsPayload {
+  const view = body.ownerDocument.defaultView
+  const computed = view?.getComputedStyle(body)
+  const frameWidth = parsePx(computed?.getPropertyValue('--raiden-frame-width') ?? '0')
+  const frameHeight = parsePx(computed?.getPropertyValue('--raiden-frame-height') ?? '0')
+
+  let phase: RaidenMetricsPayload['phase'] = 'unknown'
+  if (body.querySelector(HERO_SELECTOR)) phase = 'hero'
+  else if (body.querySelector(ACTIVE_SELECTOR)) phase = 'active'
+
+  return {
+    scene,
+    at: new Date().toISOString(),
+    enabled,
+    selectorMisses: selectorMisses(body.ownerDocument),
+    frameWidth: Math.round(frameWidth),
+    frameHeight: Math.round(frameHeight),
+    frameHidden: body.hasAttribute('data-raiden-frame-hidden'),
+    frameCompact: body.hasAttribute('data-raiden-frame-compact'),
+    phase,
+    viewportWidth: view?.innerWidth ?? 0,
+    viewportHeight: view?.innerHeight ?? 0,
+  }
+}
+
+export function stampMetrics(doc: Document, body: HTMLElement, scene?: string): void {
+  if (!metricsStampingEnabled()) return
+  const node = doc.getElementById(STYLE_ID)
+  if (!(node instanceof HTMLStyleElement)) return
+  const payload = readMetricsFromBody(body, enabledGetter(), scene)
+  // Timestamp is diagnostic only; unchanged geometry needs no attribute write.
+  const signature = JSON.stringify({ ...payload, at: '' })
+  if (signature === lastMetricsSignature) return
+  lastMetricsSignature = signature
+  node.setAttribute('data-raiden-metrics', JSON.stringify(payload))
+  maybeWarnSelectorMisses(payload.enabled, payload.selectorMisses)
+}
+
+function maybeWarnSelectorMisses(enabled: boolean, misses: string[]): void {
+  if (!enabled || selectorWarned || misses.length === 0) return
+  if (Date.now() - mountedAt < MISS_GRACE_MS) return
+  console.warn('[dsh-raiden-theme] selector miss:', misses.join(', '))
+  selectorWarned = true
+}
+
+export function clearMetricsStamp(doc: Document): void {
+  doc.getElementById(STYLE_ID)?.removeAttribute('data-raiden-metrics')
+}
+
+export function resetMetricsStampState(): void {
+  selectorWarned = false
+  mountedAt = Date.now()
+  lastMetricsSignature = ''
+}

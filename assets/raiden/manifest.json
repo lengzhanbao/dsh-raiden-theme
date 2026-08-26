@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "assetSetVersion": "2026-08-26-raiden-v1",
+  "baseline": "baseline.json",
+  "defaults": {
+    "avatar": "avatar.png",
+    "portrait": "left-light.webp",
+    "banner": null
+  },
+  "figures": {
+    "leftLight": {
+      "source": "source/right-light.jpg",
+      "file": "left-light.webp",
+      "note": "pool full-body, light left"
+    },
+    "rightLight": {
+      "source": "source/right-dark.jpg",
+      "file": "right-light.webp",
+      "note": "salute idol, light right"
+    },
+    "leftDark": {
+      "source": "source/left-dark.jpg",
+      "file": "left-dark.webp",
+      "note": "wink charcoal, dark left"
+    },
+    "rightDark": {
+      "source": "source/left-light.jpg",
+      "file": "right-dark.webp",
+      "note": "piano, dark right"
+    },
+    "heroAvatar": {
+      "source": "source/hero-avatar-original.png",
+      "file": "hero-avatar.webp",
+      "note": "chibi raiden headshot, hero left circle"
+    }
+  },
+  "wallpaper": {
+    "light": "wallpaper-light.webp",
+    "dark": "wallpaper-dark.webp"
+  },
+  "limits": {
+    "avatarBytes": 1048576,
+    "imageBytes": 5242880,
+    "allowedMime": [
+      "image/png",
+      "image/jpeg",
+      "image/webp",
+      "image/gif"
+    ]
+  }
+}

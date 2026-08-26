@@ -1,0 +1,14 @@
+Raiden Inazuma Atelier — bundled character artwork
+==============================================
+
+Files under assets/raiden/ are unofficial fan UI art for this theme.
+
+Character: Raiden Shogun / 雷电将军 (Genshin Impact)
+
+  - NOT affiliated with or licensed by HoYoverse / miHoYo
+  - For in-plugin UI display only
+  - Do NOT extract or commercially redistribute images separately
+
+Plugin source code is MIT. Character IP remains with the original holders.
+
+Rights holders: open an issue on lengzhanbao/dsh-raiden-theme to request removal.

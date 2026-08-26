@@ -1,0 +1,13 @@
+import type { RaidenAgentState, RaidenSettings } from '../state/types';
+export declare function bindAssetFallback(image: HTMLImageElement, fallbackSrc?: string): void;
+export declare function applyImageSrc(image: HTMLImageElement, src: string): void;
+export declare function applyRootAttributes(body: HTMLElement, settings: RaidenSettings, state: RaidenAgentState): void;
+export declare function syncStageArt(root?: HTMLElement, settings?: RaidenSettings): void;
+export declare function createCharacterStage(settings: RaidenSettings): HTMLElement | null;
+export declare function createAtelierFrame(): HTMLElement;
+export declare function createStageCurtains(): HTMLElement[];
+export declare function createSidebarTrim(): HTMLElement;
+export declare function createTrims(): HTMLElement[];
+export declare function decorateSidebar(settings: RaidenSettings, sidebar: HTMLElement): HTMLElement[];
+export declare function removeOwnedChrome(root?: ParentNode): void;
+export declare const TAFFY_INLINE_STYLE_KEYS: readonly ["--raiden-q-face", "--raiden-q-send", "--raiden-q-stop", "--raiden-q-new", "--raiden-q-settings", "--raiden-q-brand", "--raiden-q-command", "--raiden-frame-opacity", "--raiden-panel-opacity", "--raiden-veil-opacity", "--raiden-character-opacity", "--raiden-acrylic-percent", "--raiden-conversation-left", "--raiden-conversation-top", "--raiden-conversation-width", "--raiden-conversation-height", "--raiden-conversation-content-left", "--raiden-conversation-content-width", "--raiden-conversation-viewport-top", "--raiden-conversation-viewport-height", "--raiden-content-left", "--raiden-content-width", "--raiden-viewport-top", "--raiden-viewport-height", "--raiden-frame-left", "--raiden-frame-top", "--raiden-frame-width", "--raiden-frame-height", "--raiden-right-panel-width", "--raiden-frame-right-inset"];

@@ -1,0 +1,9 @@
+export declare const BUNDLED_AVATAR: any;
+export declare const BUNDLED_AVATAR_NIGHT: any;
+export declare const BUNDLED_PORTRAIT: any;
+export declare const BUNDLED_WALLPAPER_LIGHT: any;
+export declare const BUNDLED_WALLPAPER_DARK: any;
+export declare const BUNDLED_LEFT_LIGHT: any;
+export declare const BUNDLED_RIGHT_LIGHT: any;
+export declare const BUNDLED_LEFT_DARK: any;
+export declare const BUNDLED_RIGHT_DARK: any;

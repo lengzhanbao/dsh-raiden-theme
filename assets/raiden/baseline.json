@@ -1,0 +1,78 @@
+{
+  "assetSetVersion": "2026-08-26-raiden-v1",
+  "creamBackground": "#fff7f1",
+  "limits": {
+    "avatarBytes": 1048576,
+    "imageBytes": 5242880,
+    "widthPct": 0.12,
+    "heightPct": 0.12,
+    "bytesPct": 0.35
+  },
+  "figures": {
+    "left-light.webp": {
+      "width": 768,
+      "height": 1024,
+      "bytes": 60468,
+      "opaqueRatioMin": 0.92,
+      "bboxAreaRatioMin": 0.92,
+      "creamFringeGate": true,
+      "darkEdgeRatioMax": 0.03
+    },
+    "right-light.webp": {
+      "width": 768,
+      "height": 1024,
+      "bytes": 49620,
+      "opaqueRatioMin": 0.92,
+      "bboxAreaRatioMin": 0.92,
+      "creamFringeGate": false
+    },
+    "left-dark.webp": {
+      "width": 768,
+      "height": 1024,
+      "bytes": 43188,
+      "opaqueRatioMin": 0.92,
+      "bboxAreaRatioMin": 0.92,
+      "creamFringeGate": false
+    },
+    "right-dark.webp": {
+      "width": 768,
+      "height": 1024,
+      "bytes": 66274,
+      "opaqueRatioMin": 0.92,
+      "bboxAreaRatioMin": 0.92,
+      "creamFringeGate": false
+    },
+    "avatar.webp": {
+      "width": 640,
+      "height": 640,
+      "bytes": 46264,
+      "opaqueRatioMin": 0.92,
+      "bboxAreaRatioMin": 0.92,
+      "creamFringeGate": false
+    },
+    "portrait.webp": {
+      "width": 512,
+      "height": 640,
+      "bytes": 27918,
+      "opaqueRatioMin": 0.92,
+      "bboxAreaRatioMin": 0.92,
+      "creamFringeGate": false
+    },
+    "hero-avatar.webp": {
+      "width": 512,
+      "height": 512,
+      "bytes": 34352,
+      "opaqueRatioMin": 0.92,
+      "bboxAreaRatioMin": 0.92,
+      "creamFringeGate": false
+    }
+  },
+  "wallpaper": {
+    "wallpaper-light.webp": {
+      "bytes": 130972
+    },
+    "wallpaper-dark.webp": {
+      "bytes": 137536
+    }
+  }
+}

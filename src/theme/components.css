@@ -1,0 +1,999 @@
+/* Decorative layers + native DSH chrome. Do not restyle third-party plugin roots. */
+
+body[data-dsh-raiden-theme] [id='root'] {
+  background: transparent;
+}
+
+body[data-dsh-raiden-theme] [id='root'] div:has(> [class*='sidebarCol']):has(> [class*='centerCol']) {
+  background: transparent;
+}
+
+body[data-dsh-raiden-theme] [data-skin-chrome='character-stage'] {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body[data-dsh-raiden-theme] [data-raiden-wallpaper] {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 76%;
+  pointer-events: none;
+  opacity: 1;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-raiden-wallpaper],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-raiden-wallpaper] {
+  object-position: center 62%;
+  filter: saturate(1.08) contrast(1.04);
+}
+
+body[data-dsh-raiden-theme] [data-raiden-wallpaper][data-raiden-asset-error] {
+  opacity: 0;
+}
+
+body[data-dsh-raiden-theme] [data-raiden-veil='curtain'] {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+  background:
+    radial-gradient(
+      ellipse 48% 62% at 52% 42%,
+      color-mix(
+        in srgb,
+        var(--raiden-veil, var(--ds-raiden-cream)) calc(var(--raiden-veil-opacity, 0.12) * 130%),
+        transparent
+      ),
+      color-mix(
+        in srgb,
+        var(--raiden-veil, var(--ds-raiden-cream)) calc(var(--raiden-veil-opacity, 0.12) * 35%),
+        transparent
+      ) 68%,
+      transparent 100%
+    );
+}
+
+body[data-dsh-raiden-theme] [data-raiden-atmosphere] {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 48%,
+      color-mix(in srgb, var(--raiden-veil, var(--ds-raiden-cream)) 16%, transparent) 100%
+    ),
+    radial-gradient(
+      ellipse 90% 40% at 50% 100%,
+      color-mix(in srgb, var(--raiden-veil, var(--ds-raiden-cream)) 22%, transparent),
+      transparent 70%
+    );
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-raiden-atmosphere],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-raiden-atmosphere] {
+  background:
+    radial-gradient(ellipse 36% 48% at 18% 62%, rgba(242, 155, 194, 0.16), transparent 72%),
+    radial-gradient(ellipse 28% 36% at 84% 70%, rgba(231, 185, 87, 0.1), transparent 70%),
+    linear-gradient(180deg, transparent 42%, rgba(18, 10, 28, 0.28) 100%);
+}
+
+body[data-dsh-raiden-theme] [data-raiden-ground] {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  height: 54px;
+  border-radius: 50%;
+  filter: blur(12px);
+  background: radial-gradient(ellipse, rgba(73, 59, 80, 0.28), transparent 72%);
+}
+
+body[data-dsh-raiden-theme] [data-raiden-ground='left'] {
+  left: 0;
+  bottom: 10px;
+  width: min(30vw, 380px);
+  translate: calc(var(--raiden-conversation-left, var(--raiden-sidebar-width)) + clamp(16px, 2vw, 36px)) 0;
+}
+
+body[data-dsh-raiden-theme] [data-raiden-ground='right'] {
+  right: calc(var(--raiden-right-panel-width, var(--raiden-frame-right-inset, 0px)) + 12px);
+  bottom: 12px;
+  width: min(22vw, 280px);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-raiden-ground],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-raiden-ground] {
+  background: radial-gradient(ellipse, rgba(242, 155, 194, 0.22), rgba(8, 4, 16, 0.42) 42%, transparent 74%);
+}
+
+body[data-dsh-raiden-theme][data-raiden-hide-left] [data-raiden-ground='left'],
+body[data-dsh-raiden-theme][data-raiden-hide-right] [data-raiden-ground='right'],
+body[data-dsh-raiden-theme][data-raiden-right-crowded] [data-raiden-ground='right'] {
+  opacity: 0;
+}
+
+body[data-dsh-raiden-theme] [data-raiden-sparkles] {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, rgba(255, 216, 231, 0.95) 0 1.5px, transparent 2.4px),
+    radial-gradient(circle, rgba(231, 185, 87, 0.78) 0 1.2px, transparent 2px),
+    radial-gradient(circle, rgba(242, 155, 194, 0.7) 0 1px, transparent 1.8px);
+  background-size: 220px 180px, 280px 240px, 160px 200px;
+  background-position: 12% 18%, 78% 32%, 42% 72%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-low-power] [data-raiden-sparkles],
+body[data-dsh-raiden-theme][data-dsh-raiden-motion='off'] [data-raiden-sparkles],
+body[data-dsh-raiden-theme][data-dsh-raiden-reduced-motion='true'] [data-raiden-sparkles] {
+  display: none;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-raiden-sparkles],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-raiden-sparkles] {
+  opacity: 0.42;
+  background-image:
+    radial-gradient(circle, rgba(255, 236, 180, 0.95) 0 1.6px, transparent 2.6px),
+    radial-gradient(circle, rgba(242, 165, 200, 0.7) 0 1.2px, transparent 2.1px),
+    radial-gradient(circle, rgba(185, 167, 232, 0.65) 0 1px, transparent 1.8px);
+}
+
+body[data-dsh-raiden-theme] [data-raiden-character] {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+  opacity: var(--raiden-character-opacity, 1);
+  filter:
+    saturate(1.02)
+    contrast(0.98)
+    drop-shadow(0 0 14px rgba(255, 216, 180, 0.22))
+    drop-shadow(0 18px 16px rgba(73, 59, 80, 0.28));
+}
+
+body[data-dsh-raiden-theme] [data-raiden-character][data-raiden-asset-error] {
+  opacity: 0;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-raiden-character],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-raiden-character] {
+  filter:
+    brightness(1.04)
+    saturate(0.98)
+    contrast(1.04)
+    drop-shadow(0 0 22px rgba(242, 155, 194, 0.38))
+    drop-shadow(0 0 36px rgba(231, 185, 87, 0.16))
+    drop-shadow(0 20px 18px rgba(8, 4, 16, 0.5));
+}
+
+body[data-dsh-raiden-theme] [data-raiden-character='left'] {
+  left: 0;
+  bottom: clamp(-18px, -1.2vh, -4px);
+  translate: calc(var(--raiden-conversation-left, var(--raiden-sidebar-width)) + clamp(10px, 1.6vw, 28px)) 0;
+  height: clamp(520px, 88vh, 1080px);
+  max-width: min(32vw, 460px);
+  transform-origin: center bottom;
+  transition: none;
+}
+
+body[data-dsh-raiden-theme]:not([data-ds-dark-theme]):not([data-raiden-preset='raiden-night']) [data-raiden-character='left'] {
+  filter:
+    saturate(1.02)
+    sepia(0.1)
+    drop-shadow(-14px 0 18px rgba(255, 214, 150, 0.42))
+    drop-shadow(0 0 0.45px #fff4ea)
+    drop-shadow(0 0 16px rgba(255, 216, 180, 0.28))
+    drop-shadow(0 16px 14px rgba(120, 70, 50, 0.22));
+}
+
+body[data-dsh-raiden-theme] [data-raiden-character='right'] {
+  right: calc(var(--raiden-right-panel-width, var(--raiden-frame-right-inset, 0px)) - 8px);
+  bottom: clamp(-16px, -1vh, -4px);
+  height: clamp(500px, 84vh, 1020px);
+  max-width: min(24vw, 340px);
+  object-position: right bottom;
+  transform-origin: center bottom;
+  transition:
+    right 420ms cubic-bezier(0.22, 0.78, 0.2, 1),
+    height 420ms cubic-bezier(0.22, 0.78, 0.2, 1),
+    opacity 220ms ease;
+}
+
+/* Conservatory: left figure sits on the greenhouse floor. */
+body[data-dsh-raiden-theme]:not([data-ds-dark-theme]):not([data-raiden-preset='raiden-night']) [data-raiden-character='left'][data-raiden-pose='sit'] {
+  height: clamp(280px, 52vh, 620px);
+  max-width: min(36vw, 520px);
+  bottom: clamp(4px, 1.4vh, 18px);
+}
+
+/* Conservatory: right figure is a standing salute, keep her taller. */
+body[data-dsh-raiden-theme]:not([data-ds-dark-theme]):not([data-raiden-preset='raiden-night']) [data-raiden-character='right'][data-raiden-pose='stand'] {
+  height: clamp(420px, 72vh, 880px);
+  bottom: clamp(-8px, -0.4vh, 0px);
+}
+
+/* Concert: left wink is a bust, plant her in the spotlight. */
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-raiden-character='left'][data-raiden-pose='bust'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-raiden-character='left'][data-raiden-pose='bust'] {
+  height: clamp(340px, 58vh, 720px);
+  max-width: min(30vw, 420px);
+  bottom: clamp(8px, 2vh, 28px);
+}
+
+/* Concert: right figure sits at the piano on stage. */
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-raiden-character='right'][data-raiden-pose='sit'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-raiden-character='right'][data-raiden-pose='sit'] {
+  height: clamp(250px, 46vh, 540px);
+  max-width: min(28vw, 380px);
+  bottom: clamp(6px, 1.8vh, 22px);
+}
+
+body[data-dsh-raiden-theme][data-raiden-better-sidebar-open] [data-raiden-character='right'],
+body[data-dsh-raiden-theme][data-raiden-details-open] [data-raiden-character='right'],
+body[data-dsh-raiden-theme][data-dsh-floating-panel-open] [data-raiden-character='right'] {
+  right: calc(var(--raiden-right-panel-width, var(--raiden-frame-right-inset, 0px)) - 6px);
+  height: clamp(360px, 62vh, 780px);
+  opacity: 0.92;
+}
+
+body[data-dsh-raiden-theme][data-raiden-better-sidebar-open] [data-raiden-character='right'][data-raiden-pose='sit'],
+body[data-dsh-raiden-theme][data-raiden-details-open] [data-raiden-character='right'][data-raiden-pose='sit'],
+body[data-dsh-raiden-theme][data-dsh-floating-panel-open] [data-raiden-character='right'][data-raiden-pose='sit'] {
+  height: clamp(220px, 38vh, 420px);
+  opacity: 0.94;
+}
+
+body[data-dsh-raiden-theme][data-raiden-scene='fused'] [data-raiden-character],
+body[data-dsh-raiden-theme][data-raiden-scene='fused'] [data-raiden-ground] {
+  display: none;
+}
+
+body[data-dsh-raiden-theme][data-raiden-hide-right] [data-raiden-character='right'],
+body[data-dsh-raiden-theme][data-raiden-right-crowded] [data-raiden-character='right'] {
+  opacity: 0;
+}
+
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) {
+  position: relative;
+  background: var(--dsw-specific-sidebar-fill);
+}
+
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) [data-raiden-mascot='sidebar'] {
+  position: absolute;
+  left: 50%;
+  top: auto;
+  bottom: calc(var(--raiden-sidebar-footer-height, 56px) + 6px);
+  z-index: 0;
+  width: min(118px, calc(100% - 48px));
+  height: auto;
+  max-height: 15vh;
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 0;
+  pointer-events: none;
+  opacity: var(--raiden-character-opacity, 1);
+  translate: -50% 0;
+  filter: drop-shadow(0 6px 12px rgba(73, 59, 80, 0.16));
+}
+
+body[data-dsh-raiden-theme][data-raiden-hide-mascot] [data-raiden-mascot='sidebar'],
+body[data-dsh-raiden-theme][data-raiden-sidebar-size='rail'] [data-raiden-mascot='sidebar'] {
+  display: none;
+}
+
+body[data-dsh-raiden-theme] [data-raiden-mascot='sidebar'][data-raiden-asset-error] {
+  opacity: 0;
+}
+
+@media (max-width: 1080px) {
+  body[data-dsh-raiden-theme] [data-raiden-character='left'] {
+    height: clamp(380px, 70vh, 720px);
+  }
+
+  body[data-dsh-raiden-theme] [data-raiden-character='right'] {
+    height: clamp(360px, 66vh, 680px);
+  }
+}
+
+@media (max-width: 700px) {
+  body[data-dsh-raiden-theme] [data-raiden-character] {
+    height: clamp(240px, 46vh, 420px);
+    opacity: 0.88;
+  }
+
+  body[data-dsh-raiden-theme] [data-raiden-mascot='sidebar'] {
+    opacity: 0.72;
+    width: 96px;
+  }
+}
+
+body[data-dsh-raiden-theme] [class*='centerCol'] {
+  background: rgba(255, 247, 241, 0.16);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [class*='centerCol'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [class*='centerCol'] {
+  background: rgba(33, 27, 50, 0.22);
+}
+
+body[data-dsh-raiden-theme] [class*='centerCol'] [data-phase] {
+  background-color: transparent;
+}
+
+body[data-dsh-raiden-theme] [class*='centerCol'] [data-conversation-scroll] {
+  background-color: transparent;
+  border-radius: 22px;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [class*='centerCol'] [data-conversation-scroll],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [class*='centerCol'] [data-conversation-scroll] {
+  background-color: transparent;
+}
+
+body[data-dsh-raiden-theme] :is(
+  [data-pane='conversation'],
+  [class*='centerCol']
+) :is([data-conversation-scroll], [data-chat-flow], [data-composer-card], [data-input-mirror], textarea) {
+  --dsw-alias-label-primary: var(--ds-raiden-text);
+  --dsw-alias-label-primary-bluish: var(--ds-raiden-text);
+  --dsw-alias-brand-text: var(--ds-raiden-text);
+  color: var(--ds-raiden-text);
+  caret-color: var(--ds-raiden-pink);
+}
+
+body[data-dsh-raiden-theme] [data-chat-flow] :is(
+  [class*='markdown'],
+  [class*='Markdown'],
+  [data-slot='conversation.chat.node']
+) {
+  --dsw-alias-label-primary: var(--ds-raiden-text);
+  color: var(--ds-raiden-text);
+  font-weight: 500;
+  text-shadow: var(--raiden-text-halo);
+}
+
+body[data-dsh-raiden-theme] [data-chat-flow] :is(pre, code, kbd, samp) {
+  text-shadow: none;
+  font-weight: inherit;
+}
+
+body[data-dsh-raiden-theme] [data-composer-card] {
+  position: relative;
+  overflow: visible;
+  background: color-mix(in srgb, var(--raiden-acrylic-light) 88%, transparent);
+  border: 1px solid rgba(242, 155, 194, 0.42);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 0 0 1px rgba(231, 185, 87, 0.35),
+    inset 0 1px var(--raiden-highlight);
+  backdrop-filter: blur(12px) saturate(1.06);
+  -webkit-backdrop-filter: blur(12px) saturate(1.06);
+  color: var(--ds-raiden-text);
+}
+
+body[data-dsh-raiden-theme][data-raiden-low-power] [data-composer-card] {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--raiden-acrylic-bg-strong);
+}
+
+body[data-dsh-raiden-theme] [data-composer-card]::before {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: -2px;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(242, 155, 194, 0.95), rgba(231, 185, 87, 0.95), rgba(242, 155, 194, 0.95), transparent);
+}
+
+body[data-dsh-raiden-theme] [data-composer-card]::after {
+  content: none;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] {
+  background: var(--raiden-acrylic-dark);
+  border-color: var(--raiden-border-dark);
+}
+
+body[data-dsh-raiden-theme] [data-slot='sidebar.settings'] [role='dialog'][aria-modal='true'] {
+  background: var(--ds-raiden-cream);
+  color: var(--ds-raiden-text);
+  --dsw-alias-bg-base: var(--ds-raiden-cream);
+  --dsw-alias-bg-layer-1: var(--ds-raiden-cream);
+  --dsw-alias-bg-layer-2: var(--ds-raiden-cream);
+  --dsw-alias-bg-layer-3: var(--ds-raiden-cream-deep);
+}
+
+[data-dsh-raiden-settings] {
+  --ds-raiden-pink: #f29bc2;
+}
+
+body[data-dsh-raiden-theme] .dsh-raiden-general-row,
+[data-dsh-raiden-settings].dsh-raiden-general-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--dsw-alias-border-l2, rgba(73, 59, 80, 0.14));
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-general-title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--dsw-alias-label-primary);
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-general-note {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-slider-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--dsw-alias-label-primary);
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-slider-row input[type='range'] {
+  width: 100%;
+  accent-color: var(--ds-raiden-pink, #f29bc2);
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-general-cubes {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-general-cube {
+  box-sizing: border-box;
+  flex: 1 1 180px;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 20px 32px;
+  border: 1px solid var(--dsw-alias-border-l2, rgba(73, 59, 80, 0.14));
+  border-radius: 16px;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-general-cube:hover:not(.is-selected) {
+  background: var(--dsw-alias-interactive-bg-hover, rgba(242, 155, 194, 0.12));
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-general-cube.is-selected {
+  background: var(--dsw-alias-bg-layer-2, rgba(255, 216, 231, 0.35));
+  border-color: var(--dsw-alias-border-l3, rgba(242, 155, 194, 0.42));
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-general-cube:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+:is(body[data-dsh-raiden-theme], [data-dsh-raiden-settings]) .dsh-raiden-clover {
+  width: 16px;
+  height: 16px;
+  color: var(--ds-raiden-pink, #f29bc2);
+}
+
+/* Circular chips: new-session stays 36px; brand (collapse) is larger. */
+
+body[data-dsh-raiden-theme][data-raiden-sidebar-size='rail'] [data-slot='sidebar.settings'] > :is(button, [role='button']),
+body[data-dsh-raiden-theme][data-raiden-sidebar-size='rail'] [data-slot='sidebar.settings'] button[aria-haspopup='dialog'],
+body[data-dsh-raiden-theme][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) {
+  position: relative;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  max-width: 36px;
+  padding: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏'],
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar'],
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏'],
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar'] {
+  position: relative;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 48px;
+  padding: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='发送消息'],
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='Send message'],
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='停止生成'],
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='Stop generating'],
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='命令'],
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='Commands'] {
+  position: relative;
+  box-sizing: border-box;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='命令'],
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='Commands'] {
+  overflow: visible;
+}
+
+body[data-dsh-raiden-theme][data-raiden-sidebar-size='rail'] [data-slot='sidebar.settings'] > :is(button, [role='button']),
+body[data-dsh-raiden-theme][data-raiden-sidebar-size='rail'] [data-slot='sidebar.settings'] button[aria-haspopup='dialog'] {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  overflow: visible;
+  border-image: none;
+  border-radius: 50%;
+  font-size: 0;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='发送消息'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Send message'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='停止生成'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Stop generating'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='命令'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Commands'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] [data-slot='sidebar.settings'] button[aria-haspopup='dialog'] svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']) > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏'] > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar'] > svg {
+  opacity: 0;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='发送消息']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Send message']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='停止生成']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Stop generating']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='命令']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Commands']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] [data-slot='sidebar.settings'] button[aria-haspopup='dialog']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand'])::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand'])::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar']::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 118% 118%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='发送消息']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Send message']::after {
+  background-image: var(--raiden-q-send);
+  background-position: center;
+  background-size: 122% 122%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='停止生成']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Stop generating']::after {
+  background-image: var(--raiden-q-stop);
+  background-position: center;
+  background-size: 122% 122%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='命令']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] [data-composer-card] button[aria-label='Commands']::after {
+  background-image: var(--raiden-q-command);
+  background-position: center;
+  background-size: 122% 122%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] [data-slot='sidebar.settings'] button[aria-haspopup='dialog']::after {
+  background-image: var(--raiden-q-settings);
+  background-position: center;
+  background-size: 122% 122%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand'])::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready][data-raiden-sidebar-size='rail'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand'])::after {
+  background-image: var(--raiden-q-new);
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏']::after,
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar']::after {
+  background-image: var(--raiden-q-brand-right);
+  background-position: center;
+  background-size: 122% 122%;
+}
+
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button']),
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog'],
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']),
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  min-height: 56px;
+  height: auto;
+  padding: 8px 16px;
+  overflow: hidden;
+  border-radius: 14px;
+  color: var(--ds-raiden-text);
+  background: var(--raiden-plate-art);
+  border: 1px solid color-mix(in srgb, var(--ds-raiden-pink) 26%, transparent);
+  box-shadow: none;
+  filter: none;
+  font-size: 14px;
+  line-height: 1.2;
+  opacity: 1;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button']),
+body[data-dsh-raiden-theme][data-ds-dark-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night']:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button']),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night']:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog'],
+body[data-dsh-raiden-theme][data-ds-dark-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-ds-dark-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night']:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night']:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) {
+  color: var(--ds-raiden-text-on-dark);
+  background: var(--raiden-plate-art);
+  border-color: color-mix(in srgb, var(--ds-raiden-pink) 28%, transparent);
+}
+
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog']:hover,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']):hover,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']):hover {
+  filter: brightness(1.06);
+}
+
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog']:active,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']):active,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']):active {
+  filter: brightness(0.98);
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button'])::before,
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog']::before,
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand'])::before,
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand'])::before {
+  content: '';
+  flex: 0 0 36px;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  aspect-ratio: 1;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 118% 118%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button'])::before,
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog']::before {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  background-image: var(--raiden-q-settings);
+  background-position: center;
+  background-size: 122% 122%;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand'])::before,
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand'])::before {
+  background-image: var(--raiden-q-new);
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog'] svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']) > svg,
+body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) > svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[class*='brand'] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  min-height: 56px;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  color: var(--ds-raiden-pink);
+}
+
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[class*='brand'] > * {
+  font-size: 0;
+  line-height: 0;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[class*='brand'] :is(svg, img) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+body[data-dsh-raiden-theme][data-raiden-q-ready] :is([data-pane='sidebar'], [class*='sidebarCol']) button[class*='brand']::before {
+  content: '';
+  flex: 0 0 56px;
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  background-image: var(--raiden-q-brand);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 122% 122%;
+}
+
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[class*='brand']::after {
+  content: 'raiden-harness';
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  color: var(--ds-raiden-pink);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--ds-raiden-pink) 45%, transparent);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [class*='centerCol'] button,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [class*='centerCol'] button,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [class*='sidebarCol'] button,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [class*='sidebarCol'] button {
+  color: color-mix(in srgb, var(--ds-raiden-gold) 58%, var(--ds-raiden-pink));
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button svg,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button svg,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [class*='centerCol'] button svg,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [class*='centerCol'] button svg,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [class*='sidebarCol'] button svg,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [class*='sidebarCol'] button svg {
+  color: color-mix(in srgb, var(--ds-raiden-gold) 62%, var(--ds-raiden-pink));
+  stroke: currentColor;
+}
+
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='发送消息']:focus-visible,
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='Send message']:focus-visible,
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='停止生成']:focus-visible,
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='Stop generating']:focus-visible,
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='命令']:focus-visible,
+body[data-dsh-raiden-theme] [data-composer-card] button[aria-label='Commands']:focus-visible,
+body[data-dsh-raiden-theme] [data-slot='sidebar.settings'] button[aria-haspopup='dialog']:focus-visible,
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']):focus-visible,
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']):focus-visible,
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏']:focus-visible,
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar']:focus-visible,
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏']:focus-visible,
+body[data-dsh-raiden-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar']:focus-visible {
+  outline: 2px solid var(--ds-raiden-pink);
+  outline-offset: 2px;
+}
+
+/* Dark chrome: keep labeled rows on the sidebar fill, no extra glow plate. */
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-slot='sidebar.settings'] > :is(button, [role='button']),
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-slot='sidebar.settings'] button[aria-haspopup='dialog'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-slot='sidebar.settings'] > :is(button, [role='button']),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-slot='sidebar.settings'] button[aria-haspopup='dialog'],
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) {
+  box-shadow: none;
+  filter: none;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='发送消息'],
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Send message'],
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='停止生成'],
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Stop generating'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='发送消息'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='Send message'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='停止生成'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='Stop generating'] {
+  border: 1px solid rgba(242, 165, 200, 0.48);
+  box-shadow:
+    inset 0 1px rgba(255, 244, 250, 0.16),
+    0 0 12px rgba(242, 165, 200, 0.26);
+  transition: box-shadow 140ms ease, border-color 140ms ease, filter 140ms ease, transform 140ms ease;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏'],
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar'],
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏'],
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar'] {
+  border: 1px solid rgba(185, 167, 232, 0.32);
+  box-shadow:
+    inset 0 1px rgba(255, 244, 250, 0.1),
+    0 0 8px rgba(242, 165, 200, 0.14);
+  transition: box-shadow 140ms ease, border-color 140ms ease, filter 140ms ease, transform 140ms ease;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-slot='sidebar.settings'] button[aria-haspopup='dialog']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-slot='sidebar.settings'] button[aria-haspopup='dialog']:hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']):hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']):hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']):hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']):hover {
+  filter: brightness(1.08);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='发送消息']:hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Send message']:hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='停止生成']:hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Stop generating']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='发送消息']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='Send message']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='停止生成']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card] button[aria-label='Stop generating']:hover {
+  border-color: rgba(255, 205, 225, 0.82);
+  filter: brightness(1.1);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.24),
+    0 0 18px rgba(242, 165, 200, 0.32);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏']:hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar']:hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏']:hover,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏']:hover,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar']:hover {
+  border-color: rgba(255, 205, 225, 0.62);
+  filter: brightness(1.06);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.16),
+    0 0 12px rgba(242, 165, 200, 0.22);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-slot='sidebar.settings'] button[aria-haspopup='dialog']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']):active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']):active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='发送消息']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Send message']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='停止生成']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Stop generating']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Open sidebar']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏']:active,
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='Collapse sidebar']:active {
+  transform: scale(1.02);
+  box-shadow:
+    inset 0 2px 6px rgba(8, 4, 16, 0.42),
+    0 0 8px rgba(242, 165, 200, 0.16);
+}
+
+body[data-dsh-raiden-theme][data-raiden-low-power][data-ds-dark-theme] [data-slot='sidebar.settings'] button,
+body[data-dsh-raiden-theme][data-raiden-low-power][data-ds-dark-theme] [data-composer-card] button[aria-label='发送消息'],
+body[data-dsh-raiden-theme][data-raiden-low-power][data-ds-dark-theme] [data-composer-card] button[aria-label='Send message'],
+body[data-dsh-raiden-theme][data-raiden-low-power][data-ds-dark-theme] [data-composer-card] button[aria-label='停止生成'],
+body[data-dsh-raiden-theme][data-raiden-low-power][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']),
+body[data-dsh-raiden-theme][data-raiden-low-power][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='收起侧边栏'],
+body[data-dsh-raiden-theme][data-raiden-low-power][data-ds-dark-theme] :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='打开侧边栏'],
+body[data-dsh-raiden-theme][data-dsh-raiden-reduced-motion='true'][data-ds-dark-theme] [data-slot='sidebar.settings'] button,
+body[data-dsh-raiden-theme][data-dsh-raiden-reduced-motion='true'][data-ds-dark-theme] [data-composer-card] button[aria-label='发送消息'],
+body[data-dsh-raiden-theme][data-dsh-raiden-reduced-motion='true'][data-ds-dark-theme] [data-composer-card] button[aria-label='Send message'] {
+  box-shadow: none;
+  filter: none;
+  animation: none;
+  transition: none;
+}
+
+@media (max-width: 900px) {
+  body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='发送消息'],
+  body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Send message'],
+  body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='停止生成'] {
+    box-shadow:
+      inset 0 1px rgba(255, 244, 250, 0.12),
+      0 0 8px rgba(242, 165, 200, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-dsh-raiden-theme][data-ds-dark-theme] [data-slot='sidebar.settings'] button,
+  body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='发送消息'],
+  body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card] button[aria-label='Send message'] {
+    box-shadow: none;
+    animation: none;
+    transition: none;
+  }
+}

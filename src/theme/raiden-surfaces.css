@@ -1,0 +1,58 @@
+/* Opt-in acrylic only. Never scan host overlays, details, or undeclared plugins. */
+
+body[data-dsh-raiden-theme] :is(
+  [data-raiden-surface='acrylic'],
+  [data-plugin-root][data-raiden-acrylic='standard']
+) {
+  background: var(--raiden-acrylic-bg);
+  border-color: var(--raiden-acrylic-border);
+  box-shadow:
+    inset 0 1px var(--raiden-highlight),
+    0 16px 38px var(--raiden-acrylic-shadow);
+  backdrop-filter: blur(var(--raiden-acrylic-blur)) saturate(var(--raiden-acrylic-saturation));
+  -webkit-backdrop-filter: blur(var(--raiden-acrylic-blur)) saturate(var(--raiden-acrylic-saturation));
+}
+
+body[data-dsh-raiden-theme] [data-plugin-root][data-raiden-acrylic='soft'] {
+  background: var(--raiden-acrylic-bg-soft);
+  backdrop-filter: blur(12px) saturate(var(--raiden-acrylic-saturation));
+  -webkit-backdrop-filter: blur(12px) saturate(var(--raiden-acrylic-saturation));
+}
+
+body[data-dsh-raiden-theme] :is(
+  [data-raiden-surface='solid'],
+  [data-plugin-root][data-raiden-acrylic='off']
+) {
+  background: var(--raiden-acrylic-bg-strong);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is(
+  [data-raiden-surface='acrylic'],
+  [data-plugin-root][data-raiden-acrylic='standard']
+),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is(
+  [data-raiden-surface='acrylic'],
+  [data-plugin-root][data-raiden-acrylic='standard']
+) {
+  background: var(--raiden-acrylic-bg);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body[data-dsh-raiden-theme] :is(
+    [data-raiden-surface='acrylic'],
+    [data-plugin-root][data-raiden-acrylic='standard'],
+    [data-plugin-root][data-raiden-acrylic='soft']
+  ) {
+    background: var(--raiden-acrylic-bg-strong);
+  }
+}
+
+body[data-dsh-raiden-theme][data-raiden-low-power] :is(
+  [data-raiden-surface='acrylic'],
+  [data-plugin-root][data-raiden-acrylic='standard'],
+  [data-plugin-root][data-raiden-acrylic='soft']
+) {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--raiden-acrylic-bg-strong);
+}

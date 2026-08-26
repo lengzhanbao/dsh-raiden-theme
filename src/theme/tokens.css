@@ -1,0 +1,357 @@
+/* Raiden tokens live on body. Official --dsw-* stay on native DSH panes only. */
+
+body[data-dsh-raiden-theme] {
+  --ds-raiden-cream: #fff7f1;
+  --ds-raiden-cream-deep: #ffe8f0;
+  --ds-raiden-pink: #a78bfa;
+  --ds-raiden-pink-soft: #ddd6fe;
+  --ds-raiden-gold: #e7b957;
+  --ds-raiden-gold-deep: #c9a227;
+  --ds-raiden-charcoal: #493b50;
+  --ds-raiden-ribbon: #c43c3c;
+  --ds-raiden-lens: #91d5e8;
+  --ds-raiden-lavender: #b9a7e8;
+  --ds-raiden-text: #141018;
+  --ds-raiden-text-on-dark: #fff3e8;
+  --raiden-text-halo:
+    0 0 0.6px rgba(255, 255, 255, 0.95),
+    0 1px 0 rgba(255, 247, 241, 0.92),
+    0 0 8px rgba(255, 247, 241, 0.62);
+  --ds-raiden-border: rgba(73, 59, 80, 0.14);
+  --raiden-q-face: none;
+  --raiden-q-send: none;
+  --raiden-q-settings: none;
+  --raiden-q-brand: none;
+  --raiden-q-brand-right: none;
+  --raiden-q-new: none;
+  --raiden-q-command: none;
+  --raiden-q-stop: none;
+  --raiden-veil-strength: 0.12;
+
+  --ds-agent-idle: var(--ds-raiden-pink);
+  --ds-agent-thinking: var(--ds-raiden-lavender);
+  --ds-agent-tool: var(--ds-raiden-lens);
+  --ds-agent-streaming: var(--ds-raiden-pink-soft);
+  --ds-agent-success: var(--ds-raiden-gold);
+  --ds-agent-error: var(--ds-raiden-ribbon);
+
+  --raiden-sidebar-width: 280px;
+  --raiden-accent: var(--ds-raiden-pink);
+  --raiden-glow: rgba(167, 139, 250, 0.32);
+  --raiden-hairline: color-mix(in srgb, var(--ds-raiden-pink) 35%, transparent);
+  --raiden-motion-scale: 1;
+  --raiden-motion-duration: 1;
+  --raiden-veil: var(--ds-raiden-cream);
+  --raiden-font: "M PLUS Rounded 1c", Nunito, Inter, "Segoe UI", "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+  --raiden-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --raiden-pink: var(--ds-raiden-pink);
+  --raiden-pink-deep: #7c3aed;
+  --raiden-ink: var(--ds-raiden-text);
+  --raiden-muted: #817486;
+  --raiden-blue: var(--ds-raiden-lens);
+  --raiden-radius-sm: 8px;
+  --raiden-radius-md: 12px;
+  --raiden-radius-lg: 16px;
+  --raiden-frame-inset: 8px;
+  --raiden-frame-opacity: 0.85;
+  --raiden-panel-opacity: 82;
+  --raiden-plate-art: linear-gradient(
+    90deg,
+    rgba(196, 181, 253, 0.55),
+    rgba(255, 247, 241, 0.42) 50%,
+    rgba(167, 139, 250, 0.38)
+  );
+  --raiden-settings-frame-art: var(--raiden-plate-art);
+  --raiden-character-opacity: 1;
+  --raiden-veil-opacity: var(--raiden-veil-strength);
+  --raiden-acrylic-percent: 70;
+  --raiden-conversation-left: 0px;
+  --raiden-conversation-top: 0px;
+  --raiden-conversation-width: 0px;
+  --raiden-conversation-height: 0px;
+  --raiden-conversation-content-left: 0px;
+  --raiden-conversation-content-width: 0px;
+  --raiden-conversation-viewport-top: 0px;
+  --raiden-conversation-viewport-height: 0px;
+  --raiden-content-left: 0px;
+  --raiden-content-width: 0px;
+  --raiden-viewport-top: 0px;
+  --raiden-viewport-height: 0px;
+  --raiden-composer-top: 0px;
+  --raiden-composer-height: 0px;
+  --raiden-acrylic-bg: color-mix(in srgb, rgb(255, 250, 247) calc(var(--raiden-acrylic-percent) * 1%), transparent);
+  --raiden-acrylic-bg-strong: color-mix(in srgb, rgb(255, 250, 247) calc((var(--raiden-acrylic-percent) + 12) * 1%), transparent);
+  --raiden-acrylic-bg-soft: color-mix(in srgb, rgb(255, 250, 247) calc((var(--raiden-acrylic-percent) - 15) * 1%), transparent);
+  --raiden-acrylic-border: rgba(242, 155, 194, 0.25);
+  --raiden-acrylic-hairline: rgba(242, 155, 194, 0.22);
+  --raiden-acrylic-shadow: rgba(73, 59, 80, 0.12);
+  --raiden-acrylic-blur: 14px;
+  --raiden-acrylic-saturation: 1.05;
+  --raiden-acrylic-light: color-mix(in srgb, rgb(255, 250, 247) calc(var(--raiden-panel-opacity) * 1%), transparent);
+  --raiden-acrylic-dark: color-mix(in srgb, rgb(36, 29, 52) calc(var(--raiden-panel-opacity) * 1%), transparent);
+  --raiden-border-light: rgba(242, 155, 194, 0.34);
+  --raiden-border-dark: rgba(255, 220, 240, 0.2);
+  --raiden-highlight: rgba(255, 255, 255, 0.5);
+  --raiden-shadow: 0 12px 32px rgba(73, 59, 80, 0.12);
+
+  background-color: transparent;
+}
+
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-sakura'] {
+  --ds-raiden-cream: #f6fbfc;
+  --ds-raiden-cream-deep: #e8f4f6;
+  --raiden-accent: var(--ds-raiden-lens);
+  --raiden-glow: rgba(145, 213, 232, 0.28);
+  --raiden-veil: #f6fbfc;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] {
+  --ds-raiden-cream: #211b32;
+  --ds-raiden-cream-deep: #181326;
+  --ds-raiden-text: #fff3e8;
+  --ds-raiden-text-on-dark: #fff3e8;
+  --raiden-text-halo:
+    0 0 0.8px rgba(255, 243, 232, 0.95),
+    0 0 7px rgba(231, 185, 87, 0.34),
+    0 0 14px rgba(242, 155, 194, 0.22);
+  --raiden-veil: #211b32;
+  --raiden-veil-strength: 0.14;
+  --raiden-veil-opacity: var(--raiden-veil-strength);
+  --raiden-panel-opacity: 82;
+  --raiden-glow: rgba(242, 165, 200, 0.22);
+  --raiden-plate-art: linear-gradient(
+    90deg,
+    rgba(220, 111, 158, 0.22),
+    rgba(39, 30, 55, 0.42) 50%,
+    rgba(185, 167, 232, 0.16)
+  );
+  --raiden-settings-frame-art: var(--raiden-plate-art);
+  --raiden-acrylic-bg: color-mix(in srgb, rgb(36, 29, 52) calc(var(--raiden-acrylic-percent) * 1%), transparent);
+  --raiden-acrylic-bg-strong: color-mix(in srgb, rgb(36, 29, 52) calc((var(--raiden-acrylic-percent) + 10) * 1%), transparent);
+  --raiden-acrylic-bg-soft: color-mix(in srgb, rgb(36, 29, 52) calc((var(--raiden-acrylic-percent) - 18) * 1%), transparent);
+  --raiden-acrylic-dark: color-mix(in srgb, rgb(36, 29, 52) calc(var(--raiden-panel-opacity) * 1%), transparent);
+  --raiden-acrylic-border: rgba(255, 244, 250, 0.14);
+  --raiden-acrylic-hairline: rgba(191, 174, 235, 0.22);
+  --raiden-acrylic-shadow: rgba(0, 0, 0, 0.3);
+  --raiden-acrylic-blur: 14px;
+  --raiden-acrylic-saturation: 1.05;
+  --raiden-muted: #a99db2;
+  background-color: transparent;
+}
+
+body[data-dsh-raiden-theme] :is(
+  [class*='sidebarCol'],
+  [class*='centerCol'],
+  [class*='detailsCol'],
+  [data-pane='conversation'],
+  [data-pane='sidebar']
+) {
+  --dsw-alias-bg-base: transparent;
+  --dsw-alias-bg-layer-1: color-mix(in srgb, var(--ds-raiden-cream) 22%, transparent);
+  --dsw-alias-bg-layer-2: color-mix(in srgb, #fffdfb 28%, transparent);
+  --dsw-alias-bg-layer-3: color-mix(in srgb, var(--ds-raiden-cream-deep) 36%, transparent);
+  --dsw-alias-bg-overlay: color-mix(in srgb, var(--ds-raiden-cream) 28%, transparent);
+  --dsw-alias-border-l1: rgba(73, 59, 80, 0.08);
+  --dsw-alias-border-l2: rgba(73, 59, 80, 0.14);
+  --dsw-alias-border-l2-darkmode-thin: rgba(73, 59, 80, 0.12);
+  --dsw-alias-border-l3: color-mix(in srgb, var(--ds-raiden-pink) 42%, transparent);
+  --dsw-alias-brand-primary: var(--ds-raiden-pink);
+  --dsw-alias-brand-text: var(--ds-raiden-text);
+  --dsw-alias-button-info-fill: var(--ds-raiden-pink);
+  --dsw-alias-button-info-hover: var(--ds-raiden-pink-soft);
+  --dsw-alias-label-caption: #6d5d74;
+  --dsw-alias-label-dimmed: #8a7a90;
+  --dsw-alias-label-primary-bluish: var(--ds-raiden-text);
+  --dsw-alias-label-primary-dimmed: #5c4c62;
+  --dsw-alias-label-primary-foreground: #fff7f1;
+  --dsw-alias-label-primary-inverted: #fff7f1;
+  --dsw-alias-label-primary: var(--ds-raiden-text);
+  --dsw-alias-label-secondary: #74697b;
+  --dsw-alias-label-tertiary: #948a99;
+  --dsw-alias-interactive-bg-hover: rgba(242, 155, 194, 0.12);
+  --dsw-alias-interactive-bg-active: rgba(185, 167, 232, 0.16);
+  --dsw-specific-bubble: #fff4ea;
+  --dsw-specific-bubble-highlight: #ffe4d2;
+  --dsw-specific-sidebar-fill: color-mix(in srgb, #ffd6e8 62%, transparent);
+  --dsw-specific-input-major: color-mix(in srgb, #fffdfb 90%, transparent);
+  color: var(--ds-raiden-text);
+  font-family: var(--raiden-font);
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] :is(
+  [class*='sidebarCol'],
+  [class*='centerCol'],
+  [class*='detailsCol'],
+  [data-pane='conversation'],
+  [data-pane='sidebar']
+),
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] :is(
+  [class*='sidebarCol'],
+  [class*='centerCol'],
+  [class*='detailsCol'],
+  [data-pane='conversation'],
+  [data-pane='sidebar']
+) {
+  --dsw-alias-bg-layer-1: color-mix(in srgb, #2a2340 22%, transparent);
+  --dsw-alias-bg-layer-2: color-mix(in srgb, #2a2340 28%, transparent);
+  --dsw-alias-bg-layer-3: color-mix(in srgb, #181326 32%, transparent);
+  --dsw-alias-bg-overlay: color-mix(in srgb, #181326 28%, transparent);
+  --dsw-alias-border-l1: rgba(242, 165, 200, 0.12);
+  --dsw-alias-border-l2: rgba(185, 167, 232, 0.2);
+  --dsw-alias-border-l3: color-mix(in srgb, var(--ds-raiden-gold) 40%, transparent);
+  --dsw-alias-brand-primary: var(--ds-raiden-pink-soft);
+  --dsw-alias-brand-text: var(--ds-raiden-text);
+  --dsw-alias-label-caption: #e8dce8;
+  --dsw-alias-label-dimmed: #d4c8d8;
+  --dsw-alias-label-primary-bluish: var(--ds-raiden-text);
+  --dsw-alias-label-primary-dimmed: #f4eef4;
+  --dsw-alias-label-primary-foreground: #211b32;
+  --dsw-alias-label-primary-inverted: #211b32;
+  --dsw-alias-label-primary: var(--ds-raiden-text);
+  --dsw-alias-label-secondary: #d8cddf;
+  --dsw-alias-label-tertiary: #a99db2;
+  --dsw-specific-bubble: #2f2744;
+  --dsw-specific-bubble-highlight: #3a3250;
+  --dsw-specific-sidebar-fill: color-mix(in srgb, #271e37 64%, transparent);
+  --dsw-specific-input-major: color-mix(in srgb, #2a2340 88%, transparent);
+  color: var(--ds-raiden-text);
+}
+
+body[data-dsh-raiden-theme] [class*='centerCol'] {
+  --dsw-alias-bg-base: transparent;
+  --dsw-alias-bg-layer-1: color-mix(in srgb, var(--ds-raiden-cream) 12%, transparent);
+  --dsw-alias-bg-layer-2: color-mix(in srgb, #fffdfb 14%, transparent);
+  --dsw-alias-bg-layer-3: color-mix(in srgb, var(--ds-raiden-cream-deep) 16%, transparent);
+  --dsw-alias-bg-overlay: color-mix(in srgb, var(--ds-raiden-cream) 18%, transparent);
+}
+
+/* AppFrame.frame paints --dsw-alias-bg-base. Keep that token transparent so
+   column translucency reveals the wallpaper instead of the host shell. */
+body[data-dsh-raiden-theme] [id='root'] div:has(> [class*='sidebarCol']):has(> [class*='centerCol']) {
+  --dsw-alias-bg-base: transparent;
+}
+
+body[data-dsh-raiden-theme][data-ds-dark-theme] [class*='centerCol'],
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [class*='centerCol'] {
+  --dsw-alias-bg-layer-1: color-mix(in srgb, #2a2340 12%, transparent);
+  --dsw-alias-bg-layer-2: color-mix(in srgb, #2a2340 14%, transparent);
+  --dsw-alias-bg-layer-3: color-mix(in srgb, #181326 16%, transparent);
+  --dsw-alias-bg-overlay: color-mix(in srgb, #181326 18%, transparent);
+}
+
+body[data-dsh-raiden-theme][data-raiden-state='idle'] {
+  --raiden-accent: var(--ds-agent-idle);
+}
+
+body[data-dsh-raiden-theme][data-raiden-state='thinking'] {
+  --raiden-accent: var(--ds-agent-thinking);
+  --raiden-glow: rgba(185, 167, 232, 0.3);
+}
+
+body[data-dsh-raiden-theme][data-raiden-state='tool-calling'] {
+  --raiden-accent: var(--ds-agent-tool);
+  --raiden-glow: rgba(145, 213, 232, 0.3);
+}
+
+body[data-dsh-raiden-theme][data-raiden-state='streaming'] {
+  --raiden-accent: var(--ds-agent-streaming);
+  --raiden-glow: rgba(242, 155, 194, 0.3);
+}
+
+body[data-dsh-raiden-theme][data-raiden-state='success'] {
+  --raiden-accent: var(--ds-agent-success);
+}
+
+body[data-dsh-raiden-theme][data-raiden-state='error'] {
+  --raiden-accent: var(--ds-agent-error);
+  --raiden-glow: rgba(196, 60, 60, 0.3);
+}
+
+body[data-dsh-raiden-theme][data-raiden-veil='thin'] {
+  --raiden-veil-strength: 0.08;
+}
+
+body[data-dsh-raiden-theme][data-raiden-veil='standard'] {
+  --raiden-veil-strength: 0.12;
+}
+
+body[data-dsh-raiden-theme][data-raiden-veil='thick'] {
+  --raiden-veil-strength: 0.18;
+}
+
+body[data-dsh-raiden-theme][data-raiden-frame-opacity='70'] {
+  --raiden-frame-opacity: 0.7;
+}
+
+body[data-dsh-raiden-theme][data-raiden-frame-opacity='85'] {
+  --raiden-frame-opacity: 0.85;
+}
+
+body[data-dsh-raiden-theme][data-raiden-frame-opacity='100'] {
+  --raiden-frame-opacity: 1;
+}
+
+body[data-dsh-raiden-theme][data-raiden-panel-opacity='55'] {
+  --raiden-panel-opacity: 55;
+}
+
+body[data-dsh-raiden-theme][data-raiden-panel-opacity='70'] {
+  --raiden-panel-opacity: 70;
+}
+
+body[data-dsh-raiden-theme][data-raiden-panel-opacity='85'] {
+  --raiden-panel-opacity: 85;
+}
+
+body[data-dsh-raiden-theme][data-raiden-panel-opacity='92'] {
+  --raiden-panel-opacity: 92;
+}
+
+body[data-dsh-raiden-theme][data-raiden-character-opacity='70'] {
+  --raiden-character-opacity: 0.7;
+}
+
+body[data-dsh-raiden-theme][data-raiden-character-opacity='85'] {
+  --raiden-character-opacity: 0.85;
+}
+
+body[data-dsh-raiden-theme][data-raiden-character-opacity='100'] {
+  --raiden-character-opacity: 1;
+}
+
+body[data-dsh-raiden-theme][data-raiden-acrylic-percent='50'] {
+  --raiden-acrylic-percent: 50;
+}
+
+body[data-dsh-raiden-theme][data-raiden-acrylic-percent='70'] {
+  --raiden-acrylic-percent: 70;
+}
+
+body[data-dsh-raiden-theme][data-raiden-acrylic-percent='85'] {
+  --raiden-acrylic-percent: 85;
+}
+
+body[data-dsh-raiden-theme][data-raiden-acrylic-percent='92'] {
+  --raiden-acrylic-percent: 92;
+}
+
+body[data-dsh-raiden-theme][data-dsh-raiden-intensity='low'] {
+  --raiden-motion-scale: 0.6;
+  --raiden-motion-duration: 1.4;
+}
+
+body[data-dsh-raiden-theme][data-dsh-raiden-intensity='high'] {
+  --raiden-motion-scale: 1.2;
+  --raiden-motion-duration: 0.8;
+}
+
+body[data-dsh-raiden-theme][data-dsh-raiden-motion='off'],
+body[data-dsh-raiden-theme][data-dsh-raiden-reduced-motion='true'] {
+  --raiden-motion-scale: 0;
+}
+
+body[data-dsh-raiden-theme][data-raiden-low-power] {
+  --raiden-acrylic-blur: 0px;
+  --raiden-motion-scale: 0;
+}
