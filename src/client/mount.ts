@@ -209,8 +209,6 @@ export function applyRootAttributes(body: HTMLElement, settings: RaidenSettings,
     ? settings.avatar
     : BUNDLED_HERO_AVATAR
   body.style.setProperty('--raiden-hero-avatar', `url("${heroAvatar}")`)
-  body.toggleAttribute('data-raiden-hide-left', !settings.showLeftCharacter)
-  body.toggleAttribute('data-raiden-hide-right', !settings.showRightCharacter)
   body.toggleAttribute('data-raiden-hide-mascot', true)
   body.toggleAttribute('data-raiden-hide-workspace-mascot', !settings.showWorkspaceMascot)
   body.toggleAttribute('data-raiden-low-power', shouldUseLowPower(settings))
