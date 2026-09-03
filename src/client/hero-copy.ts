@@ -13,14 +13,16 @@ export interface HeroCopySync {
   restore: () => void
 }
 
-export function resolveHeroHeadline(_settings?: RaidenSettings): string {
-  return RAIDEN_HERO_HEADLINE
+export const DEFAULT_HERO_HEADLINE = RAIDEN_HERO_HEADLINE
+
+export function resolveHeroHeadline(settings?: RaidenSettings): string {
+  const custom = settings?.heroHeadline?.trim()
+  return custom || RAIDEN_HERO_HEADLINE
 }
 
 /** DSH owns this text; keep an exact snapshot so plugin dispose restores it. */
-export function createHeroCopySync(getHeadline: () => string): HeroCopySync {
-  const originals = new Map<HTMLElement, string>()
-  const themeHeadlines = new Set<string>()
+export function createHeroCopySync(getHeadline: () => string = () => DEFAULT_HERO_HEADLINE): HeroCopySync {
+  const originals = new Map<HTMLElement, { original: string, applied: string }>()
 
   return {
     apply(root: ParentNode): void {
@@ -28,24 +30,18 @@ export function createHeroCopySync(getHeadline: () => string): HeroCopySync {
       for (const node of root.querySelectorAll(HERO_TEXT_SELECTOR)) {
         if (!(node instanceof HTMLElement)) continue
         const text = node.textContent ?? ''
-        const trimmed = text.trim()
-        if (HOST_HEADLINES.has(trimmed)) {
-          if (!originals.has(node)) originals.set(node, text)
-          node.textContent = headline
-          continue
-        }
-        if (originals.has(node) || themeHeadlines.has(trimmed)) {
-          node.textContent = headline
-        }
+        const known = originals.get(node)
+        if (known ? text !== known.applied : !HOST_HEADLINES.has(text.trim())) continue
+        if (known) known.applied = headline
+        else originals.set(node, { original: text, applied: headline })
+        node.textContent = headline
       }
-      themeHeadlines.add(headline)
     },
     restore(): void {
-      for (const [node, text] of originals) {
-        if (node.isConnected) node.textContent = text
+      for (const [node, record] of originals) {
+        if (node.isConnected && node.textContent === record.applied) node.textContent = record.original
       }
       originals.clear()
-      themeHeadlines.clear()
     },
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@dsh-external/dsh-raiden-theme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Raiden Inazuma Atelier / 稻妻雷电工房 — violet-gold acrylic DSH Web theme: light conservatory & dark electro stage, Raiden overlays, optional agent preset.",
   "type": "module",
   "main": "./lib/index.js",

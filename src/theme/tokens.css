@@ -256,7 +256,7 @@ body[data-dsh-raiden-theme][data-raiden-state='tool-calling'] {
 
 body[data-dsh-raiden-theme][data-raiden-state='streaming'] {
   --raiden-accent: var(--ds-agent-streaming);
-  --raiden-glow: rgba(242, 155, 194, 0.3);
+  --raiden-glow: rgba(167, 139, 250, 0.3);
 }
 
 body[data-dsh-raiden-theme][data-raiden-state='success'] {

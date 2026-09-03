@@ -1,8 +1,9 @@
 // @ts-nocheck
-import { createElement, useEffect, useState } from 'react'
+import { createElement, useEffect, useRef, useState } from 'react'
 import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
 import type { RaidenSettings } from '../state/types'
 import { loadSettings, saveSettings } from './settings-store'
+import { RAIDEN_HERO_HEADLINE } from './hero-copy'
 
 const SETTINGS_NS = 'settings.raidenTheme'
 
@@ -70,6 +71,30 @@ function Slider({
   )
 }
 
+function TextField({
+  label,
+  value,
+  placeholder,
+  onChange,
+}: {
+  label: string
+  value: string
+  placeholder?: string
+  onChange: (value: string) => void
+}) {
+  return createElement('label', { className: 'dsh-raiden-text-row' },
+    createElement('span', { className: 'dsh-raiden-slider-head' },
+      createElement('span', null, label),
+    ),
+    createElement('input', {
+      type: 'text',
+      value,
+      placeholder,
+      onInput: (event) => onChange(event.currentTarget.value),
+    }),
+  )
+}
+
 function RaidenModeRow() {
   const [settings, setSettings] = useState(loadSettings)
 
@@ -83,10 +108,25 @@ function RaidenModeRow() {
     }
   }, [])
 
+  const commitNow = (patch: Partial<RaidenSettings>) => {
+    setSettings((prev) => ({ ...prev, ...patch }))
+    saveSettings({ ...loadSettings(), ...patch })
+  }
+
+  const commitRef = useRef(commitNow)
+  commitRef.current = commitNow
+
+  const textTimer = useRef(0)
+  useEffect(() => () => window.clearTimeout(textTimer.current), [])
+
+  const commitText = (patch: Partial<RaidenSettings>) => {
+    window.clearTimeout(textTimer.current)
+    textTimer.current = window.setTimeout(() => commitRef.current(patch), 300)
+  }
+
   const commit = (patch: Partial<RaidenSettings>) => {
-    const next = { ...settings, ...patch }
-    setSettings(next)
-    saveSettings(next)
+    if ('heroHeadline' in patch || 'avatar' in patch) return commitText(patch)
+    commitNow(patch)
   }
 
   return createElement('div', {
@@ -127,6 +167,19 @@ function RaidenModeRow() {
       label: '立绘透明度',
       value: settings.characterOpacity,
       onChange: (characterOpacity) => commit({ characterOpacity }),
+    }),
+    createElement('div', { className: 'dsh-raiden-general-title' }, '个性化'),
+    createElement(TextField, {
+      label: '标题文案',
+      value: settings.heroHeadline,
+      placeholder: RAIDEN_HERO_HEADLINE,
+      onChange: (heroHeadline) => commit({ heroHeadline: heroHeadline.trim() || RAIDEN_HERO_HEADLINE }),
+    }),
+    createElement(TextField, {
+      label: '头像图片地址',
+      value: settings.avatar === 'default' ? '' : settings.avatar,
+      placeholder: '留空使用默认雷电头像',
+      onChange: (avatar) => commit({ avatar: avatar.trim() || 'default' }),
     }),
     createElement('div', { className: 'dsh-raiden-general-title' }, '工作区 Q 版动图'),
     createElement('div', { className: 'dsh-raiden-general-cubes' },

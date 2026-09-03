@@ -50,7 +50,7 @@ const PRESETS: Record<Exclude<RaidenColorPreset, 'custom'>, ThemeTokens> = {
   },
 }
 
-const TAFFY_TOKEN_KEYS = [
+const RAIDEN_TOKEN_KEYS = [
   '--ds-raiden-pink',
   '--ds-raiden-charcoal',
   '--ds-raiden-gold',
@@ -79,7 +79,7 @@ export function resolveThemeTokens(colors: RaidenColorConfig): ThemeTokens {
 }
 
 export function snapshotThemeTokens(root: HTMLElement): InlineStyleSnapshot[] {
-  return snapshotInlineStyles(root, TAFFY_TOKEN_KEYS)
+  return snapshotInlineStyles(root, RAIDEN_TOKEN_KEYS)
 }
 
 export function applyThemeTokens(root: HTMLElement, tokens: ThemeTokens, options?: { pinText?: boolean }): void {

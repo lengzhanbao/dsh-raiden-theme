@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.1.1 — 2026-09-03
+
+### 动画与流畅度（按玻璃拟态动效规范）
+
+- 持续动画只走合成器：星光层 `background-position` 改 `translate3d` + `opacity`
+- 纱幕呼吸 `saturate` 滤镜改 `opacity` 脉冲，全屏重绘降为透明度合成
+- 标题浮动 `box-shadow` 逐帧绘制精简为纯 `transform`，静态光环保留在基类
+- 标题渐变流光周期 7s → 8.5s（渐变周期不低于 8 秒）
+- 发送按钮光晕减弱并放缓 2.8s → 3.4s
+- `will-change: transform, opacity` 仅加在星光/标题/发送按钮上，滤镜类动画不加
+- `prefers-reduced-motion` 补上星光层；窗口 resize 时星光/纱幕/边框一并暂停
+
+### 主题纯度
+
+- 清理混入的 Taffy 粉色硬编码（约 40 处），Raiden 全量回归紫金色板
+- 重命名 `TAFFY_*` 残留常量为 `RAIDEN_*`
+- 测试基线对齐 Raiden 色值（浅底 `244,238,252` / 深底 `22,12,38`）
+
+### 设置（对齐 Taffy）
+
+- 新增「个性化」：标题文案、头像图片地址（留空恢复默认，300ms 防抖）
+- 标题文案设置驱动 + 单记录还原；标题同步走 rAF 合帧
+- 新增文本输入框样式（`.dsh-raiden-text-row`）
+- 新增 2 项 hero 文案测试（94 项通过）
+
+### 工程
+
+- 重新生成 `src/client/theme-css.ts` 与 `lib/client.js`
+
 ## 0.1.0 — 2026-08-26
 
 ### 主题与视觉

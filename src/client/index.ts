@@ -29,7 +29,7 @@ import {
   removeOwnedChrome,
   syncStageArt,
   syncSidebarMascot,
-  TAFFY_INLINE_STYLE_KEYS,
+  RAIDEN_INLINE_STYLE_KEYS,
 } from './mount'
 import { restoreInlineStyles, snapshotInlineStyles } from './inline-restore'
 import { createStateObserver } from './state-view'
@@ -41,7 +41,7 @@ export const inject = ['slots', 'locale']
 export function apply(ctx: ClientContext): void {
   const body = document.body
   const tokenSnapshot = snapshotThemeTokens(body)
-  const inlineSnapshot = snapshotInlineStyles(body, TAFFY_INLINE_STYLE_KEYS)
+  const inlineSnapshot = snapshotInlineStyles(body, RAIDEN_INLINE_STYLE_KEYS)
   let settings = loadSettings()
   let state: RaidenAgentState = 'idle'
   let chromeMounted = false

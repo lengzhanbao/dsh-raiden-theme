@@ -34,10 +34,10 @@ describe('plugin isolation', () => {
   })
 
   it('keeps veil and centerCol translucent enough for wallpaper', () => {
-    expect(themeCss).toMatch(/--raiden-veil-strength:\s*0\.1[28]/)
+    expect(themeCss).toMatch(/--raiden-veil-strength:\s*0\.06/)
     expect(themeCss).not.toMatch(/--raiden-veil-strength:\s*0\.[3-9]/)
-    expect(themeCss).toContain('rgba(255, 247, 241, 0.16)')
-    expect(themeCss).toContain('rgba(33, 27, 50, 0.22)')
+    expect(themeCss).toContain('rgba(244, 238, 252, 0.16)')
+    expect(themeCss).toContain('rgba(22, 12, 38, 0.22)')
     expect(themeCss).toContain(":has(> [class*='sidebarCol']):has(> [class*='centerCol'])")
   })
 
