@@ -59,6 +59,7 @@
   "files": [
     "lib/index.js",
     "lib/config.js",
+    "lib/boot-raiden.js",
     "lib/assets/route.js",
     "lib/assets/manifest.js",
     "lib/assets/trust-fence.js",
