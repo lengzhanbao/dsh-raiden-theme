@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.2 — 2026-09-10
+
+### 兼容 DSH 0.1.5-rc.1
+
+- `peerDependencies` 各 `@deepseek-ai/*` 范围追加 `^0.1.5-rc.1`（此前上限 `<0.2.0-0`
+  prerelease 线）。主题只用稳定 API（cordis / slots / webServer），无需改代码。
+
+### 打包修复（与 Taffy v0.1.3 同类事故）
+
+- `files` 白名单补上 `lib/boot-raiden.js`：`lib/index.js` 引用了它，但白名单漏掉，
+  `npm pack` 排除后 DSH 加载报 `ERR_MODULE_NOT_FOUND ... boot-raiden.js`。
+  本地开发目录文件齐全所以一切正常，只有解包后的 tarball 会炸。
+
 ## 0.1.1 — 2026-09-03
 
 ### 动画与流畅度（按玻璃拟态动效规范）
