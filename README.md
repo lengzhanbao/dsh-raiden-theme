@@ -22,7 +22,7 @@
 ## 下载即用
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/latest/download/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
 dsh web
 ```
 

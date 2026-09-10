@@ -59,25 +59,25 @@ gh release create v0.1.0 E:\taffy\.cache\downloads\dsh-external-dsh-raiden-theme
 
 - **GitHub 仓库地址**：https://github.com/lengzhanbao/dsh-raiden-theme
 - **插件类型**：cordis-plugin
-- **一句话简介**：粉金亚克力 DSH Web 主题：浅色/深色舞台立绘、可调透明层，附带可选 Raiden Agent 预设。
+- **一句话简介**：紫金亚克力 DSH Web 主题：浅色/深色舞台立绘、可调透明层，附带可选 Raiden Agent 预设。
 - **作者自述简介**：[Raiden Inazuma Atelier 是为 DeepSeek Harness Web 做的虚拟直播工房式 UI 皮肤。设置里可单独开关和调整透明度；皮肤与 Agent 口吻分离。资源本地打包，仅改外观。]
 - **是否已打 dsh-plugin 相关 topic**：是
 
 ## 补充说明
 
-- 安装：`dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/latest/download/dsh-external-dsh-raiden-theme-0.1.0.tgz`
+- 安装：`dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz`
 - 无需 API Key；要求 DSH Web `0.1.0-rc.6+`
 - 截图：README 中 `preview/light.webp`、`preview/dark.webp`
 ```
 
 ## 发版后
 
-- [ ] README / install 文档中的 `latest` 链接可下载
+- [ ] README / install 文档中的固定版本链接可下载
 - [ ] `dsh plugin add ...latest...` 在干净 profile 冒烟通过
 - [ ] awesome-dsh-plugin PR（`docs/market/lengzhanbao__dsh-raiden-theme.yml`）
 
 ## 回滚
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.1/dsh-external-dsh-raiden-theme-0.1.1.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
 ```

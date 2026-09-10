@@ -15,7 +15,7 @@ Web UI only — not CLI or other profiles.
 ## Install (recommended)
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/latest/download/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
 ```
 
 Pinned version:
@@ -34,7 +34,7 @@ Light/dark follows DSH: **Settings → Appearance**.
 
 ## Quick checklist
 
-- [ ] Wallpaper and pink-gold chat frame visible
+- [ ] Wallpaper and violet-gold chat frame visible
 - [ ] Raiden sliders in **Settings → General**
 - [ ] Readable chat text (dark ink in light mode, warm gold-pink white in dark)
 - [ ] Settings dialog opens and is clickable
@@ -47,7 +47,7 @@ Skin and voice are **independent**. For Raiden speaking style, select agent pres
 
 ```bash
 # upgrade
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/latest/download/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
 dsh web
 
 # remove

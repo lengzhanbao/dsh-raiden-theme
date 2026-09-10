@@ -11,12 +11,12 @@
 | Node | ≥ 20（与 DSH 一致） |
 | Python | ≥ 3.11 + Pillow（仅 `verify:assets` / CI） |
 | PowerShell | 7+ 或 Windows PowerShell 5.1（仅 `npm run build` / `install:*`） |
-| 已发布 tag | `v0.1.0`（latest）；`v0.1.1` 可作回滚 |
+| 已发布 tag | `v0.1.0`（latest）；尚无更早 Release，回退用本地 `npm run install:release` 包 |
 
 ## 对外安装（与 README 一致）
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/latest/download/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
 dsh web
 ```
 
