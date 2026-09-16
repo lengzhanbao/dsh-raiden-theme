@@ -66,10 +66,11 @@ describe('decorative CSS contracts', () => {
     expect(components).toContain('--raiden-q-send')
     expect(components).toContain('--raiden-q-settings')
     expect(components).toContain('--raiden-q-brand')
-    expect(components).toContain('--raiden-q-brand-right')
+    expect(components).not.toContain('--raiden-q-brand-right')
     expect(components).toContain("button[aria-label='发送消息']")
     expect(components).toContain("button[aria-haspopup='dialog']")
     expect(components).toContain("button[class*='brand']")
+    expect(components).toMatch(/收起侧边栏'[\s\S]{0,500}linear-gradient\(145deg/)
     expect(motion).toContain('raiden-send-glow')
   })
 

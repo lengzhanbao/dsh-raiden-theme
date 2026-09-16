@@ -32,18 +32,20 @@ describe('Raiden headshot icons', () => {
     expect(bundledQ).not.toContain('data:image/')
   })
 
-  it('keeps new-session at 36px, collapse at 48px, DS brand at 56px, and fills Q faces at 118–122%', () => {
+  it('keeps new-session at 36px, whale-style collapse at 40px, DS brand at 56px, and fills Q faces at 118–122%', () => {
     expect(components).toContain("button[aria-label='发送消息']")
     expect(components).toContain("button[aria-label='收起侧边栏']")
     expect(components).toContain("content: 'raiden-harness'")
     expect(components).toContain("button[class*='brand']::after")
     expect(components).not.toContain('padding-right: 66px')
-    expect(components).toMatch(/收起侧边栏'\]::after[\s\S]{0,400}--raiden-q-brand-right/)
+    expect(components).not.toMatch(/收起侧边栏'\]::after[\s\S]{0,400}--raiden-q-brand-right/)
+    expect(components).toMatch(/收起侧边栏'\]::after[\s\S]{0,400}content:\s*none/)
+    expect(components).toMatch(/收起侧边栏'[\s\S]{0,500}border:\s*1px solid color-mix\(in srgb, var\(--ds-raiden-gold\)/)
     expect(components).toContain('width: 36px')
     expect(components).toContain('min-width: 36px')
+    expect(components).toContain('width: 40px')
     expect(components).toContain('width: 42px')
     expect(components).toContain('width: 44px')
-    expect(components).toContain('width: 48px')
     expect(components).toContain('width: 56px')
     expect(components).toContain('background-size: 118% 118%')
     expect(components).toContain('background-size: 122% 122%')
