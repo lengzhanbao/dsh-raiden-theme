@@ -397,19 +397,51 @@ body[data-dsh-raiden-theme][data-raiden-low-power] [data-composer-card] {
   background: var(--raiden-acrylic-bg-strong);
 }
 
+/* Violet-gold filigree — modest inset; stays under controls */
 body[data-dsh-raiden-theme] [data-composer-card]::before {
   content: '';
   position: absolute;
-  left: 8%;
-  right: 8%;
-  top: -2px;
-  height: 2px;
+  inset: -6px -5px -5px;
+  z-index: 0;
+  box-sizing: border-box;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.85), rgba(231, 185, 87, 0.85), rgba(167, 139, 250, 0.85), transparent);
+  border-radius: 22px;
+  background:
+    var(--raiden-gold-corner-art) top 0 left 0 / 44px 44px no-repeat,
+    var(--raiden-gold-corner-tr) top 0 right 0 / 44px 44px no-repeat,
+    var(--raiden-gold-corner-bl) bottom 0 left 0 / 44px 44px no-repeat,
+    var(--raiden-gold-corner-br) bottom 0 right 0 / 44px 44px no-repeat,
+    var(--raiden-gold-bow-art) top -2px center / 44px 18px no-repeat,
+    var(--raiden-gold-jewel-art) left -2px center / 16px 16px no-repeat,
+    var(--raiden-gold-jewel-art) right -2px center / 16px 16px no-repeat,
+    var(--raiden-gold-dust-bar) top 1px center / min(280px, 72%) 16px no-repeat,
+    var(--raiden-gold-dust-bar) bottom 1px center / min(260px, 66%) 16px no-repeat;
+  filter: drop-shadow(0 1px 3px rgba(61, 42, 82, 0.14));
+  opacity: 1;
 }
 
 body[data-dsh-raiden-theme] [data-composer-card]::after {
-  content: none;
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-sizing: border-box;
+  padding: 2px;
+  background:
+    linear-gradient(90deg, transparent 4%, rgba(167, 139, 250, 0.85), rgba(231, 185, 87, 0.95), rgba(237, 233, 254, 0.95), rgba(196, 181, 253, 1), rgba(231, 185, 87, 0.95), rgba(167, 139, 250, 0.85), transparent 96%) top / 100% 2px no-repeat,
+    linear-gradient(90deg, transparent 8%, rgba(196, 181, 253, 0.75), rgba(231, 185, 87, 0.7), transparent 92%) bottom / 100% 1.5px no-repeat,
+    var(--raiden-gold-dust-edge);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 1;
 }
 
 body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card],
@@ -418,13 +450,56 @@ body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-ca
   border-color: var(--raiden-border-dark);
 }
 
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card]::before,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card]::before,
+body[data-dsh-raiden-theme][data-ds-dark-theme] [data-composer-card]::after,
+body[data-dsh-raiden-theme][data-raiden-preset='raiden-night'] [data-composer-card]::after {
+  opacity: 1;
+  filter: saturate(1.25) brightness(1.24) drop-shadow(0 0 5px rgba(167, 139, 250, 0.42));
+}
+
+body[data-dsh-raiden-theme][data-raiden-low-power] [data-composer-card]::before,
+body[data-dsh-raiden-theme][data-dsh-raiden-motion='off'] [data-composer-card]::before,
+body[data-dsh-raiden-theme][data-dsh-raiden-reduced-motion='true'] [data-composer-card]::before {
+  filter: none;
+}
+
 body[data-dsh-raiden-theme] [data-slot='sidebar.settings'] [role='dialog'][aria-modal='true'] {
+  position: relative;
+  overflow: visible;
   background: var(--ds-raiden-cream);
   color: var(--ds-raiden-text);
+  border: 1px solid rgba(167, 139, 250, 0.38);
+  box-shadow:
+    inset 0 0 0 1px rgba(231, 185, 87, 0.32),
+    0 18px 40px rgba(61, 42, 82, 0.14);
   --dsw-alias-bg-base: var(--ds-raiden-cream);
   --dsw-alias-bg-layer-1: var(--ds-raiden-cream);
   --dsw-alias-bg-layer-2: var(--ds-raiden-cream);
   --dsw-alias-bg-layer-3: var(--ds-raiden-cream-deep);
+}
+
+body[data-dsh-raiden-theme] [data-slot='sidebar.settings'] [role='dialog'][aria-modal='true']::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-sizing: border-box;
+  padding: 1.5px;
+  background:
+    var(--raiden-gold-dust-bar) top 2px center / min(240px, 56%) 12px no-repeat,
+    var(--raiden-gold-dust-edge);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.88;
 }
 
 [data-dsh-raiden-settings] {
@@ -716,12 +791,47 @@ body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pan
   border-radius: 14px;
   color: var(--ds-raiden-text);
   background: var(--raiden-plate-art);
-  border: 1px solid color-mix(in srgb, var(--ds-raiden-pink) 26%, transparent);
-  box-shadow: none;
+  border: 1px solid color-mix(in srgb, var(--ds-raiden-gold) 42%, var(--ds-raiden-pink));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--ds-raiden-pink) 28%, transparent),
+    0 0 10px rgba(167, 139, 250, 0.18);
   filter: none;
   font-size: 14px;
   line-height: 1.2;
   opacity: 1;
+}
+
+/* Violet-gold plate rim — new session + settings (expanded) */
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button'])::after,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog']::after,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand'])::after,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand'])::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    var(--raiden-gold-corner-art) top 0 left 0 / 34px 34px no-repeat,
+    var(--raiden-gold-corner-tr) top 0 right 0 / 34px 34px no-repeat,
+    var(--raiden-gold-corner-bl) bottom 0 left 0 / 34px 34px no-repeat,
+    var(--raiden-gold-corner-br) bottom 0 right 0 / 34px 34px no-repeat,
+    var(--raiden-gold-bow-art) top 1px center / 42px 15px no-repeat,
+    var(--raiden-gold-jewel-art) bottom 2px center / 12px 12px no-repeat,
+    var(--raiden-gold-dust-bar) top 0 center / min(190px, 72%) 14px no-repeat,
+    var(--raiden-gold-dust-bar) bottom 0 center / min(170px, 64%) 14px no-repeat,
+    var(--raiden-gold-dust-edge);
+  opacity: 1;
+  filter: saturate(1.4) brightness(1.45) drop-shadow(0 0 5px rgba(167, 139, 250, 0.55));
+}
+
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button']) > *,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog'] > *,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand']) > *,
+body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) > * {
+  position: relative;
+  z-index: 1;
 }
 
 body[data-dsh-raiden-theme][data-ds-dark-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] > :is(button, [role='button']),
@@ -734,7 +844,7 @@ body[data-dsh-raiden-theme][data-raiden-preset='raiden-night']:not([data-raiden-
 body[data-dsh-raiden-theme][data-raiden-preset='raiden-night']:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand']) {
   color: var(--ds-raiden-text-on-dark);
   background: var(--raiden-plate-art);
-  border-color: color-mix(in srgb, var(--ds-raiden-pink) 28%, transparent);
+  border-color: color-mix(in srgb, var(--ds-raiden-gold) 38%, var(--ds-raiden-pink));
 }
 
 body[data-dsh-raiden-theme]:not([data-raiden-sidebar-size='rail']) [data-slot='sidebar.settings'] button[aria-haspopup='dialog']:hover,
@@ -754,6 +864,8 @@ body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='
 body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='新建会话']:not([class*='brand'])::before,
 body[data-dsh-raiden-theme][data-raiden-q-ready]:not([data-raiden-sidebar-size='rail']) :is([data-pane='sidebar'], [class*='sidebarCol']) button[aria-label='New session']:not([class*='brand'])::before {
   content: '';
+  position: relative;
+  z-index: 1;
   flex: 0 0 36px;
   box-sizing: border-box;
   width: 36px;

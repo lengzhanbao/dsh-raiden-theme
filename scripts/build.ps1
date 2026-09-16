@@ -38,13 +38,13 @@ Link-Package '@deepseek-ai\dsh-client-ui-theme' "$Checkout\packages\client\ui-th
 Link-Package '@deepseek-ai\dsh-client-ui-settings' "$Checkout\packages\client\ui-settings"
 Link-Package '@deepseek-ai\dsh-client-ui-settings-general' "$Checkout\packages\client\ui-settings-general"
 
-$reactDir = Get-ChildItem "$Checkout\node_modules\.pnpm" -Directory -Filter 'react@18.3.1' | Select-Object -First 1
-$reactDomDir = Get-ChildItem "$Checkout\node_modules\.pnpm" -Directory -Filter 'react-dom@18.3.1*' | Select-Object -First 1
-if ($reactDir) { Link-Package 'react' "$($reactDir.FullName)\node_modules\react" }
-if ($reactDomDir) { Link-Package 'react-dom' "$($reactDomDir.FullName)\node_modules\react-dom" }
-
-$Tsc = "$Checkout\node_modules\typescript\bin\tsc"
-if (-not (Test-Path $Tsc)) { $Tsc = "$Checkout\node_modules\.bin\tsc.cmd" }
+$pnpmDir = Join-Path $Checkout 'node_modules\.pnpm'
+if (Test-Path $pnpmDir) {
+  $reactDir = Get-ChildItem $pnpmDir -Directory -Filter 'react@18.3.1' -ErrorAction SilentlyContinue | Select-Object -First 1
+  $reactDomDir = Get-ChildItem $pnpmDir -Directory -Filter 'react-dom@18.3.1*' -ErrorAction SilentlyContinue | Select-Object -First 1
+  if ($reactDir) { Link-Package 'react' "$($reactDir.FullName)\node_modules\react" }
+  if ($reactDomDir) { Link-Package 'react-dom' "$($reactDomDir.FullName)\node_modules\react-dom" }
+}
 
 node -e @"
 const fs = require('fs');
@@ -61,7 +61,21 @@ const css = [
 fs.writeFileSync(path.join(root, 'src/client/theme-css.ts'), css);
 "@
 
-& node $Tsc -p tsconfig.host.json
+$TscJs = Join-Path $Root 'node_modules\typescript\bin\tsc'
+$TscCheckoutJs = "$Checkout\node_modules\typescript\bin\tsc"
+$TscCmd = Join-Path $Root 'node_modules\.bin\tsc.cmd'
+$TscCheckoutCmd = "$Checkout\node_modules\.bin\tsc.cmd"
+if (Test-Path $TscJs) {
+  & node $TscJs -p tsconfig.host.json
+} elseif (Test-Path $TscCheckoutJs) {
+  & node $TscCheckoutJs -p tsconfig.host.json
+} elseif (Test-Path $TscCmd) {
+  & $TscCmd -p tsconfig.host.json
+} elseif (Test-Path $TscCheckoutCmd) {
+  & $TscCheckoutCmd -p tsconfig.host.json
+} else {
+  throw 'typescript tsc not found (install deps or set DSH_CHECKOUT with node_modules)'
+}
 if ($LASTEXITCODE -ne 0) { throw 'host tsc failed' }
 New-Item -ItemType Directory -Force -Path (Join-Path $Root 'lib\prompt') | Out-Null
 Copy-Item (Join-Path $Root 'src\prompt\raiden-system.md') (Join-Path $Root 'lib\prompt\raiden-system.md') -Force
