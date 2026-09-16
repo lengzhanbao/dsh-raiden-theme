@@ -72,6 +72,9 @@ export function createChromeObserver(options: ChromeObserverOptions): { disconne
   maybeDecorateSidebar()
 
   return {
+    refreshHero: () => {
+      heroSync.schedule()
+    },
     disconnect: () => {
       heroSync.cancel()
       scheduler.cancel()

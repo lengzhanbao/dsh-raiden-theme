@@ -2,7 +2,9 @@
  * Browser client entry for @dsh-external/dsh-raiden-theme.
  * Host apply() is empty; this file owns chrome, CSS, and General-row settings.
  */
-import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
+import type { Context as ClientContext } from '@deepseek-ai/cordis'
+import type {} from '@deepseek-ai/dsh-client-locale/client'
+import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
 import type { RaidenAgentState } from '../state/types'
 import { resetStateAdapter } from '../state/adapter'
 import { applyThemeTokens, restoreThemeTokens, resolveThemeTokens, snapshotThemeTokens } from '../theme/user-theme'
@@ -54,6 +56,7 @@ export function apply(ctx: ClientContext): void {
   let disposeConversationMetrics: (() => void) | undefined
   let disposeAcrylicSurfaces: (() => void) | undefined
   let disposeChromeObserver: (() => void) | undefined
+  let refreshHeroCopy: (() => void) | undefined
 
   const restoreHostStyles = (): void => {
     restoreThemeTokens(body, tokenSnapshot)
@@ -73,6 +76,7 @@ export function apply(ctx: ClientContext): void {
     disposeAcrylicSurfaces = undefined
     disposeChromeObserver?.()
     disposeChromeObserver = undefined
+    refreshHeroCopy = undefined
   }
 
   const unmountChrome = (): void => {
@@ -118,9 +122,11 @@ export function apply(ctx: ClientContext): void {
     disposeSidebarMetrics = startSidebarMetrics(document)
     disposeConversationMetrics = startConversationMetrics(document, body)
     disposeAcrylicSurfaces = startAcrylicSurfaces(document)
-    disposeChromeObserver = createChromeObserver({
+    const chrome = createChromeObserver({
       getSettings: () => settings,
-    }).disconnect
+    })
+    disposeChromeObserver = chrome.disconnect
+    refreshHeroCopy = chrome.refreshHero
     chromeMounted = true
   }
 
@@ -151,6 +157,7 @@ export function apply(ctx: ClientContext): void {
       settings = next
       syncTheme()
       ensureChrome()
+      refreshHeroCopy?.()
       syncSidebarMascot(settings, document)
     })
 
