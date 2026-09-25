@@ -15,13 +15,13 @@ Web UI only — not CLI or other profiles.
 ## Install (recommended)
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 ```
 
 Pinned version:
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 ```
 
 Then:
@@ -47,7 +47,7 @@ Skin and voice are **independent**. For Raiden speaking style, select agent pres
 
 ```bash
 # upgrade
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 dsh web
 
 # remove

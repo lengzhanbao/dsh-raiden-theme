@@ -7,9 +7,9 @@
 | | |
 | --- | --- |
 | Package | `@dsh-external/dsh-raiden-theme` |
-| Version | `0.1.0` |
+| Version | `0.1.6` |
 | Platform | DSH **Web** profile only |
-| Requires | DeepSeek Harness `0.1.0-rc.6`+ |
+| Requires | DeepSeek Harness `0.1.0-rc.6`+（兼容 `0.1.5` / `0.1.6-alpha`） |
 
 ## 截图
 
@@ -22,7 +22,7 @@
 ## 下载即用
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 dsh web
 ```
 
@@ -43,14 +43,16 @@ dsh web
   - **浅色**：樱花花房、紫藤、暖色日光，将军端坐于左侧  
   - **深色**：天守阁雷暴、紫电、浮樱瓣，将军侧身持薙刀于右侧  
 - **融合立绘（fused scene）**：角色已烘焙进壁纸，避免重复叠图，不再叠加独立立绘层
-- **紫金亚克力对话框**：粉紫外框 + 金边内框，半透明磨砂面板，对话区与输入框统一稻妻配色
+- **紫金亚克力对话框**：粉紫外框 + 金边内框，半透明磨砂面板；边框带紫金 SVG 角饰 / 尘条花纹
 - **环境粒子**：浅色飘樱瓣、深色电光微粒；可在「减弱动效」下关闭
 - **主标题文案**：首页大标题替换为 **「原神！！！启动！！！」**（卸载主题后自动还原）
 
 ### 侧栏与图标
 
-- **品牌头像**：侧栏底部放大版 Q 版雷电将军头像
+- **品牌头像**：侧栏品牌位 Q 版雷电将军头像
+- **Whale 式折叠钮**：展开/收起为紫金边框 + 原生 panel SVG（不再用裁切头像）
 - **Q 版功能图标**：新建会话、发送、设置、命令芯片等节点替换为统一 Q 版风格图标
+- **「新会话」「设置」板框**：展开态紫金板框花纹（与对话框同系）
 - **工作区 Q 版动图**：挂载在侧栏 **工作区** 区域右下角（位于「已归档」上方），约 148×148px  
   - 6 帧慢速拳击/闪电循环动画（无损 WebP）  
   - 浅色/深色各一套，边缘按主题色去黑边、仅外轮廓保留抗锯齿透明  
@@ -77,9 +79,10 @@ dsh web
 ### 工程质量
 
 - 资产门控：`npm run verify:assets` 校验壁纸/立绘尺寸、抠图质量、版本号
-- 92 项单元测试 + 静态校验 + 打包校验
-- 资源本地打包，经 DSH 资产路由 `/raiden-theme/assets/` 提供
+- 90+ 项单元测试 + 静态校验 + 打包校验；GitHub Actions CI（Node 22）
+- 资源本地打包，经 DSH 资产路由提供
 - 架构参考 [Taffy Live Atelier](https://github.com/lengzhanbao/dsh-taffy-theme) 与 [maid-atelier](https://github.com/Small-tailqwq/dsh-deep-whale/tree/main/maid-atelier)，**独立仓库、独立包名，未混用塔菲角色图**
+- 兼容 DSH `0.1.6-alpha`（`dsh-client-ui-renderer`）
 
 ## 简介
 

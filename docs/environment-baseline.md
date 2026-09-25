@@ -1,29 +1,29 @@
 # 环境基线
 
-记录时间：2026-08-22（v0.1.0 已发布；awesome-dsh-plugin PR 待合并）
+记录时间：2026-09-25（v0.1.6 已发布）
 
 | 项 | 值 |
 | --- | --- |
 | DSH_HOME | `E:\DeepSeekHarness` |
-| 当前版本 | `0.1.0`（本地已 commit；GitHub Release / tag 待打） |
+| 当前版本 | `0.1.6`（本地已 commit；GitHub Release / tag 待打） |
 | Web profile | `E:\DeepSeekHarness\profiles\web` |
 | 默认端口 | `http://127.0.0.1:3080` |
 | Node | ≥ 20（与 DSH 一致） |
 | Python | ≥ 3.11 + Pillow（仅 `verify:assets` / CI） |
 | PowerShell | 7+ 或 Windows PowerShell 5.1（仅 `npm run build` / `install:*`） |
-| 已发布 tag | `v0.1.0`（latest）；尚无更早 Release，回退用本地 `npm run install:release` 包 |
+| 已发布 tag | `v0.1.6`（latest）；尚无更早 Release，回退用本地 `npm run install:release` 包 |
 
 ## 对外安装（与 README 一致）
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 dsh web
 ```
 
 固定版本：
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 ```
 
 ## 开发者 link

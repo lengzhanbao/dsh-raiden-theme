@@ -20,7 +20,7 @@
 
 ```powershell
 cd E:\DeepSeekHarness\profiles\web
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 dsh web
 ```
 

@@ -17,13 +17,13 @@
 在终端执行：
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 ```
 
 固定版本链接（长期有效，与上方相同）：
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 ```
 
 然后：
@@ -55,7 +55,7 @@ dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/rel
 ## 升级
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 dsh web
 ```
 
@@ -71,7 +71,7 @@ dsh web
 刷新后界面恢复 DSH 默认。若要装回官方 Release：
 
 ```bash
-dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.0/dsh-external-dsh-raiden-theme-0.1.0.tgz
+dsh plugin --profile web add https://github.com/lengzhanbao/dsh-raiden-theme/releases/download/v0.1.6/dsh-external-dsh-raiden-theme-0.1.6.tgz
 ```
 
 ## 常见问题
