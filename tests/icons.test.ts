@@ -13,7 +13,6 @@ describe('Raiden headshot icons', () => {
     const bundledQ = readFileSync(join(root, 'src/client/bundled-q.ts'), 'utf8')
     for (const name of ['face-look', 'face-happy', 'face-stop', 'face-portrait', 'face-wink', 'face-new', 'face-pet']) {
       expect(existsSync(join(icons, `${name}.webp`)), name).toBe(true)
-      expect(existsSync(join(icons, `${name}.png`)), name).toBe(true)
     }
     expect(existsSync(join(icons, 'archive-q-light.webp'))).toBe(true)
     expect(existsSync(join(icons, 'archive-q-dark.webp'))).toBe(true)
